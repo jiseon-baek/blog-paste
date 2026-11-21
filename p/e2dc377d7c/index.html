@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>붙여넣기 · 불륜 의혹 26일 만에 다시 열린 원현주 SNS, 남은 건 게시물 3개와 '언팔' 그대로 + 양홍원 측 입장 (양홍원)</title>
+<style>
+  /* 네이버 인용구 컴포넌트 미리보기 (복사되는 HTML엔 영향 없음) */
+  .se-quotation-container { margin:8px auto; padding:14px 20px; max-width:560px; text-align:center;
+         border:none; font-family:'Nanum Myeongjo','나눔명조',serif; font-size:20px; color:#111; position:relative; }
+  .se-quotation-container::before { content:'“'; display:block; font-size:40px; line-height:1; color:#999; font-family:Georgia,serif; }
+  .se-quotation-container::after { content:''; display:block; width:120px; margin:10px auto 0; border-top:1px solid #ccc; }
+  .se-quotation-container p { margin:0; }
+  :root { --accent:#03c75a; --ink:#222; --muted:#888; --line:#e5e5e5; --done:#f3faf5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f5f6f7; color:var(--ink);
+         font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  .top { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  .tabs { display:flex; gap:4px; padding:10px 16px 0; overflow-x:auto; }
+  .tab { border:1px solid var(--line); border-bottom:none; background:#f5f6f7; border-radius:8px 8px 0 0;
+         padding:8px 16px; font-size:14px; cursor:pointer; white-space:nowrap; color:var(--muted); }
+  .tab.on { background:#fff; color:var(--ink); font-weight:600; box-shadow:inset 0 3px 0 var(--accent); }
+  .tab small { margin-left:6px; font-weight:400; color:var(--muted); }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+         border-top:1px solid var(--line); }
+  .bar button { border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px;
+                font-size:14px; cursor:pointer; }
+  .bar .next { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+  .bar .status { font-size:14px; color:var(--muted); }
+  .bar .status b { color:var(--ink); }
+  .help { font-size:12px; color:var(--muted); margin-left:auto; }
+  .paper { max-width:773px; margin:20px auto 80px; background:#fff; padding:32px 40px;
+           border:1px solid var(--line); }
+  .chunk { position:relative; padding:10px 12px; margin:0 -12px 6px; border-radius:8px;
+           border:2px dashed transparent; cursor:pointer; }
+  .chunk:hover { border-color:#cfe9d8; }
+  .chunk.current { border-color:var(--accent); border-style:solid; }
+  .chunk.done { background:var(--done); }
+  .chunk .no { position:absolute; left:-46px; top:8px; width:30px; height:22px; border-radius:11px;
+               background:#ddd; color:#fff; font-size:12px; text-align:center; line-height:22px; }
+  .chunk.current .no { background:var(--accent); }
+  .chunk.done .no { background:#9bd3ae; }
+  .chunk img { display:block; max-width:100%; margin:0 auto; }
+  .chunk.title { font-size:26px; font-weight:700; line-height:1.4; }
+  .kind { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .sec { display:flex; align-items:center; gap:10px; margin:22px -12px 8px; padding:8px 12px;
+         background:#eef8f1; border-radius:8px; font-size:13px; color:#2a6b40; }
+  .sec b { color:#174a2a; }
+  .sec button { margin-left:auto; border:1px solid var(--accent); background:#fff; color:#0a8a3e;
+                border-radius:6px; padding:6px 12px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .sec.current { background:var(--accent); color:#fff; }
+  .sec.current b { color:#fff; }
+  .sec.done button { background:#9bd3ae; border-color:#9bd3ae; color:#fff; }
+  .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#222; color:#fff;
+           padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s;
+           pointer-events:none; }
+  .toast.show { opacity:.92; }
+  @media (max-width:860px){ .paper{padding:20px 16px;margin:12px} .chunk .no{left:4px;top:4px} .help{display:none} }
+.bar button.auto{background:#ffcc00;color:#222;font-weight:700}
+.sec button.auto{background:#ffcc00;color:#222;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <button id="copyTitle">제목 복사</button>
+    <button id="secPrev">◀ 이전</button>
+    <button class="next" id="secNext">다음 복사 ▶</button>
+    <button id="copyText">본문 텍스트만 전체 복사</button>
+    <button class="auto" id="autoAll">⚡ 전체 자동 붙여넣기</button>
+    <button id="autoStop">■ 멈추기</button>
+    <span class="status" id="status"></span>
+    <span class="help">스페이스 = 다음 블록 복사 (글 → 사진 → 글 …) · 사진은 PNG 파일로 복사돼 네이버에 직접 올린 사진처럼 들어가요 (사진 수·대표이미지 OK) · 블록 클릭 = 그 블록만 복사 · 네이버에서 ⌘V</span>
+  </div>
+</div>
+<div class="paper" id="paper"></div>
+<div class="toast" id="toast"></div>
+<script>
+const TABS = [{"name": "B 연예 이슈", "style": "이슈", "title": "불륜 의혹 26일 만에 다시 열린 원현주 SNS, 남은 건 게시물 3개와 '언팔' 그대로 + 양홍원 측 입장 (양홍원)", "chunks": [{"kind": "title", "text": "불륜 의혹 26일 만에 다시 열린 원현주 SNS, 남은 건 게시물 3개와 '언팔' 그대로 + 양홍원 측 입장 (양홍원)", "html": "불륜 의혹 26일 만에 다시 열린 원현주 SNS, 남은 건 게시물 3개와 '언팔' 그대로 + 양홍원 측 입장 (양홍원)", "sec": -1}, {"kind": "image", "src": "png/01.png", "name": "a1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">래퍼 <b><span style=\"font-size:18px\">양홍원<\/span><\/b>의 아내인 모델 <b><span style=\"font-size:18px\">원현주<\/span><\/b>가<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">닫았던 SNS를 다시 열었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">남편의 <b><span style=\"font-size:18px\">불륜 의혹<\/span><\/b>이 불거진<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">지 약 26일 만이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">하지만 남편과 관련된 흔적은 보이지 않았어요.<\/p>", "sec": 0, "text": "래퍼 양홍원의 아내인 모델 원현주가\n닫았던 SNS를 다시 열었어요.\n남편의 불륜 의혹이 불거진\n지 약 26일 만이에요.\n하지만 남편과 관련된 흔적은 보이지 않았어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">남은 건 본인 사진 3장<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "남은 건 본인 사진 3장"}, {"kind": "image", "src": "png/02.png", "name": "g0.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">원현주는 최근 SNS<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">계정을 <b><span style=\"font-size:18px\">공개로 전환<\/span><\/b>했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">기존에 올렸던 <b><span style=\"font-size:18px\">남편과 딸의<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">사진은 모두 사라졌고<\/span><\/b>,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">현재는 <b><span style=\"font-size:18px\">본인 모습이 담긴<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">게시글 3개<\/span><\/b>만 남아 있어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "원현주는 최근 SNS\n계정을 공개로 전환했어요.\n기존에 올렸던 남편과 딸의\n사진은 모두 사라졌고,\n현재는 본인 모습이 담긴\n게시글 3개만 남아 있어요."}, {"kind": "image", "src": "png/03.png", "name": "g1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">74명에 달하는 팔로우 목록에서도<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">양홍원의 계정은 찾아볼 수 없었어요<\/span><\/b>.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">의혹이 불거진 직후 비공개로 돌리며<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">언팔로우했던 상태가 그대로인 거예요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "74명에 달하는 팔로우 목록에서도\n양홍원의 계정은 찾아볼 수 없었어요.\n의혹이 불거진 직후 비공개로 돌리며\n언팔로우했던 상태가 그대로인 거예요."}, {"kind": "image", "src": "png/04.png", "name": "a2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">반면 유튜브 채널 <b><span style=\"font-size:18px\">'양홍원의 육아일기' PD<\/span><\/b>와<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">결혼식 사회를 맡았던 래퍼 <b><span style=\"font-size:18px\">스윙스<\/span><\/b>는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여전히 팔로우하고 있었어요.<\/p>", "sec": 0, "text": "반면 유튜브 채널 '양홍원의 육아일기' PD와\n결혼식 사회를 맡았던 래퍼 스윙스는\n여전히 팔로우하고 있었어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">결혼식 닷새 만에 불거진 의혹<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "결혼식 닷새 만에 불거진 의혹"}, {"kind": "image", "src": "png/05.png", "name": "c2.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">두 사람은 지난달 18일 <b><span style=\"font-size:18px\">결혼식<\/span><\/b>을 올렸어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">2023년 혼인신고를 마쳤고,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이듬해 딸을 얻었죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">유튜브 '양홍원의 육아일기'로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">가족의 일상을 공유해 왔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "두 사람은 지난달 18일 결혼식을 올렸어요.\n2023년 혼인신고를 마쳤고,\n이듬해 딸을 얻었죠.\n유튜브 '양홍원의 육아일기'로\n가족의 일상을 공유해 왔어요."}, {"kind": "image", "src": "png/06.png", "name": "c1.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">그런데 결혼식 닷새 만인 지난달 23일,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">양홍원이 결혼식을 앞두고<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">다른 여성과 모텔에 동행했다<\/span><\/b>는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">주장이 온라인에 올라왔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">결혼식 직후라 파장은 더 컸어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "그런데 결혼식 닷새 만인 지난달 23일,\n양홍원이 결혼식을 앞두고\n다른 여성과 모텔에 동행했다는\n주장이 온라인에 올라왔어요.\n결혼식 직후라 파장은 더 컸어요."}, {"kind": "image", "src": "png/07.png", "name": "a4.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">소속사 <b><span style=\"font-size:18px\">AP 알케미<\/span><\/b> 측은 <b><span style=\"font-size:18px\">모텔에<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">동행한 사실 자체는 인정<\/span><\/b>했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">하지만 <b><span style=\"font-size:18px\">불륜 의혹엔 강하게 선을 그었고<\/span><\/b>,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">폭로자의 주장이 왜곡됐다는 입장을 밝혔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#555555;background-color:#fff8b2;font-size:19px\"><b>원현주·양홍원 상황 정리<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><ul style=\"margin:0;padding-left:22px;list-style-type:disc\"><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>10월 18일<\/b> : 결혼식 (2023년 혼인신고)<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>10월 23일<\/b> : 모텔 동행 폭로 → 불륜 의혹<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>소속사<\/b> : 모텔 동행은 인정, 불륜은 부인<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>11월<\/b> : 원현주 SNS 공개 전환, 양홍원 언팔 상태<\/p><\/li><\/ul>", "sec": 1, "text": "소속사 AP 알케미 측은 모텔에\n동행한 사실 자체는 인정했어요.\n하지만 불륜 의혹엔 강하게 선을 그었고,\n폭로자의 주장이 왜곡됐다는 입장을 밝혔어요.\n\n\n원현주·양홍원 상황 정리\n\n\n10월 18일 : 결혼식 (2023년 혼인신고)\n10월 23일 : 모텔 동행 폭로 → 불륜 의혹\n소속사 : 모텔 동행은 인정, 불륜은 부인\n11월 : 원현주 SNS 공개 전환, 양홍원 언팔 상태"}, {"kind": "text", "html": "<hr style=\"border:none;border-top:1px solid #cccccc;margin:24px 0\">", "sec": 1, "text": ""}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">\"우리도 사러 옴\" 메시지에 다시 관심<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "\"우리도 사러 옴\" 메시지에 다시 관심"}, {"kind": "image", "src": "png/08.png", "name": "a3.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">지난 16일엔 양홍원과 지인으로 추정되는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">A씨의 <b><span style=\"font-size:18px\">문자 메시지<\/span><\/b>가 공개됐어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">A씨가 지난달 31일<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"딸 생일선물 산다\"<\/span><\/b>고 하자 양홍원은<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"우리도 사러옴\"<\/span><\/b>이라고 답했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "지난 16일엔 양홍원과 지인으로 추정되는\nA씨의 문자 메시지가 공개됐어요.\nA씨가 지난달 31일\n\"딸 생일선물 산다\"고 하자 양홍원은\n\"우리도 사러옴\"이라고 답했어요."}, {"kind": "image", "src": "png/09.png", "name": "a5.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">딸의 생일이 11월 1일인 만큼,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'우리'<\/span><\/b>라는 표현을 두고 아내와<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">함께였던 것 아니냐는 <b><span style=\"font-size:18px\">추측<\/span><\/b>이 나왔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#777777\">두 사람의 관계에 대해 본인들이<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#777777\">직접 밝힌 내용은 없어요.<\/span><\/p>", "sec": 1, "text": "딸의 생일이 11월 1일인 만큼,\n'우리'라는 표현을 두고 아내와\n함께였던 것 아니냐는 추측이 나왔어요.\n두 사람의 관계에 대해 본인들이\n직접 밝힌 내용은 없어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">✍ 핫이슈가 본 관전 포인트<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "✍ 핫이슈가 본 관전 포인트"}, {"kind": "image", "src": "png/10.png", "name": "g2.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">SNS 팔로우 하나, 문자 한 줄로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">부부 관계를 단정하긴 어려워요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">어린 딸이 있는 만큼 추측보다는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">당사자들의 입장을 기다리는 게 먼저겠죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여러분은 이번 SNS 재개, 어떻게 보셨나요?<\/p>", "sec": 1, "text": "SNS 팔로우 하나, 문자 한 줄로\n부부 관계를 단정하긴 어려워요.\n어린 딸이 있는 만큼 추측보다는\n당사자들의 입장을 기다리는 게 먼저겠죠.\n여러분은 이번 SNS 재개, 어떻게 보셨나요?"}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"font-size:18px;color:#222222\"><b>📌 함께 보면 좋은 글<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "📌 함께 보면 좋은 글"}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480727141", "name": "미리보기 속 34기 영철 눈물, '현숙 거절' 스포는 맞았을까? + \"제 스스로의 여정은 끝난 느낌\" (나는", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480727141<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480566251", "name": "9회 연속 동시간대 1위, 최고 6.7% 찍은 임시완·설인아 입맞춤 엔딩 + 10회 공식 연인 데이트 예고", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480566251<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480552156", "name": "7대 제임스 본드는 로버트 패틴슨, 본드걸 후보 45명 중 5번째로 꼽힌 정호연 + 젠데이아·마거릿 퀄리 (", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480552156<\/p>", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">#원현주 #양홍원 #원현주인스타 #원현주SNS #양홍원불륜의혹 #양홍원아내 #언팔로우 #양홍원소속사 #AP알케미 #양홍원의육아일기 #스윙스 #래퍼양홍원 #모델원현주 #양홍원결혼식 #원현주근황 #양홍원입장 #힙합 #연예계이슈 #불륜의혹 #결혼식닷새<\/p>", "sec": 1, "text": "#원현주 #양홍원 #원현주인스타 #원현주SNS #양홍원불륜의혹 #양홍원아내 #언팔로우 #양홍원소속사 #AP알케미 #양홍원의육아일기 #스윙스 #래퍼양홍원 #모델원현주 #양홍원결혼식 #원현주근황 #양홍원입장 #힙합 #연예계이슈 #불륜의혹 #결혼식닷새"}], "missing": [], "secNames": ["도입 · 남은 건 본인 사진 3장", "결혼식 닷새 만에 불거진 의혹 · 마무리 · \"우리도 사러 옴\" 메시지에 다시 관심 · ✍ 핫이슈가 본 관전 포인트 · 함께 보면 좋은 글"]}];
+const label = {title:'제목 칸에 붙여넣기', text:'본문', image:'이미지', link:'링크 주소 (붙여넣으면 썸네일 카드)'};
+const paper = document.getElementById('paper');
+let tab = 0, cur = -1;
+const state = TABS.map(() => ({cur: -1, done: new Set(), sec: -1, secDone: new Set()}));
+let CH = [], SECS = [], chunkEls = [];
+
+function showTab(t) {
+  state[tab].cur = cur;
+  tab = t; cur = state[t].cur; CH = TABS[t].chunks;
+  [...document.querySelectorAll('.tab')].forEach((el, k) => el.classList.toggle('on', k === t));
+  paper.innerHTML = ''; chunkEls = [];
+  SECS = [...new Set(CH.filter(c => c.kind !== 'title').map(c => c.sec))];
+  CH.forEach((c, i) => {
+    if (c.kind !== 'title' && (i === 0 || CH[i - 1].sec !== c.sec)) {
+      const si = SECS.indexOf(c.sec), cs = CH.filter(x => x.sec === c.sec);
+      const h = document.createElement('div');
+      h.className = 'sec' + (state[t].secDone.has(si) ? ' done' : '') + (si === state[t].sec ? ' current' : '');
+      h.dataset.si = si;
+      h.innerHTML = `<span>구역 <b>${si + 1}</b>/${SECS.length} · <b>${TABS[t].secNames[c.sec]}</b> · 사진 ${cs.filter(x => x.kind === 'image').length}장 (폴더: 구역별 사진/구역${c.sec + 1})</span>`;
+      const btn = document.createElement('button'); btn.textContent = '여기부터 복사';
+      btn.onclick = () => copyAt(CH.indexOf(cs[0])); h.appendChild(btn);
+      const ab = document.createElement('button'); ab.textContent = '⚡ 자동 붙여넣기'; ab.className = 'auto';
+      ab.onclick = e => { e.stopPropagation(); autoPaste(cs); }; h.appendChild(ab);
+      paper.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'chunk ' + c.kind + (state[t].done.has(i) ? ' done' : '') + (i === cur ? ' current' : '');
+    d.innerHTML = `<span class="no">${i + 1}</span><div class="kind">${label[c.kind]}${c.name ? ' · ' + c.name : ''}</div>`;
+    if (c.kind === 'image') { const im = new Image(); im.src = c.src; d.appendChild(im); }
+    else { const b = document.createElement('div'); b.innerHTML = c.html; d.appendChild(b); }
+    d.onclick = () => copyAt(i);
+    paper.appendChild(d); chunkEls.push(d);
+  });
+  try { localStorage.setItem('blogPasteTab', t); } catch (e) {}
+  render();
+}
+
+const tabsEl = document.getElementById('tabs');
+TABS.forEach((t, k) => {
+  const b = document.createElement('button');
+  b.className = 'tab';
+  b.innerHTML = `${t.name}<small>${t.style}</small>`;
+  b.onclick = () => showTab(k);
+  tabsEl.appendChild(b);
+});
+if (TABS.length < 2) tabsEl.style.display = 'none';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function toPng(src) {
+  const im = new Image(); im.src = src; await im.decode();
+  const cv = document.createElement('canvas');
+  cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext('2d').drawImage(im, 0, 0);
+  return new Promise(r => cv.toBlob(r, 'image/png'));
+}
+
+function legacyCopy(node) {
+  // 클립보드 API가 막힐 때 대비: 화면의 블록을 선택해서 복사
+  const sel = getSelection(), rg = document.createRange();
+  rg.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(rg);
+  const ok = document.execCommand('copy'); sel.removeAllRanges();
+  if (!ok) throw new Error('브라우저가 복사를 막았어요');
+}
+
+async function copyAt(i) {
+  const c = CH[i];
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      if (c.kind === 'image') throw new Error('이 브라우저는 사진 복사를 지원하지 않아요');
+      legacyCopy(chunkEls[i].lastElementChild);
+    } else if (c.kind === 'image') {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': toPng(c.src)})]);
+
+    } else if (c.kind === 'title' || c.kind === 'link') {
+      await navigator.clipboard.writeText(c.text);
+    } else {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([c.html], {type: 'text/html'}),
+        'text/plain': new Blob([c.text], {type: 'text/plain'}),
+      })]);
+    }
+  } catch (e) {
+    if (c.kind === 'image') {
+      // 링크 사진(HTML)으로 대신 복사하면 네이버 사진 수·대표이미지가 안 잡히므로 대체 복사는 하지 않는다
+      toast('사진 복사 실패 (' + e.name + ') · 사진을 우클릭(모바일은 길게 눌러) → 이미지 복사로 넣어주세요');
+      return;
+    }
+    try { legacyCopy(chunkEls[i].lastElementChild); }
+    catch (e2) { toast('복사 실패: ' + e.message); return; }
+  }
+  cur = i; state[tab].done.add(i);
+  const els = chunkEls;
+  els.forEach((el, k) => el.classList.toggle('current', k === i));
+  els[i].classList.add('done');
+  els[i].scrollIntoView({block: 'center', behavior: 'smooth'});
+  render();
+  toast(`${i + 1}번 ${c.kind === 'image' ? 'PNG 사진' : label[c.kind]} 복사됨 → 네이버에서 ⌘V`);
+}
+
+// ── 전체 복사 ─────────────────────────────
+// 텍스트만 한 번에, 이미지 자리는 [이미지 n · 파일명] 표시
+// (이미지 포함 일괄 붙여넣기는 네이버 로그아웃을 일으켜서 제거함)
+function bodyHtml() {
+  let n = 0;
+  return CH.filter(c => c.kind !== 'title').map(c => {
+    if (c.kind !== 'image') return c.html;
+    n++;
+    return `<p style="text-align:center"><span style="color:#d00;font-size:13px">[이미지 ${String(n).padStart(2,'0')} · ${c.name}]</span></p>`;
+  }).join('');
+}
+
+async function copyWhole() {
+  const html = bodyHtml();
+  const box = document.createElement('div');
+  box.innerHTML = html;
+  const plain = box.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([plain], {type: 'text/plain'}),
+    })]);
+  } catch (e) {
+    box.style.cssText = 'position:fixed;left:-99999px;top:0';
+    document.body.appendChild(box);
+    try { legacyCopy(box); } catch (e2) { box.remove(); toast('복사 실패: ' + e.message); return; }
+    box.remove();
+  }
+  const nImg = CH.filter(c => c.kind === 'image').length;
+  toast(`본문 텍스트 복사됨 → 이미지 ${nImg}장은 [이미지 n] 자리에 넣어주세요`);
+}
+
+function render() {
+  document.getElementById('status').innerHTML =
+    cur < 0 ? `총 <b>${CH.length}</b>개 블록 · 사진 ${CH.filter(c => c.kind === 'image').length}장` : `블록 <b>${cur + 1}</b> / ${CH.length}`;
+}
+// 한 블록씩: 글은 서식 그대로, 사진은 PNG 이미지 데이터로 (주소 링크가 아니라 파일처럼 올라감)
+const nextSec = () => {
+  const i = cur + 1;
+  if (i >= CH.length) return toast('마지막 블록이에요');
+  copyAt(i);
+};
+// ⚡ 자동 붙여넣기: 내 Mac의 도우미(auto_paste.py)가 글→⌘V→사진→⌘V 순서로 대신 붙여넣음
+async function autoPaste(cs) {
+  const blocks = cs.map(c => {
+    if (c.kind === 'image') return { kind: 'image', url: new URL(c.src, location.href).href };
+    if (c.kind === 'link') return { kind: 'url', text: c.text };
+    const d = document.createElement('div'); d.innerHTML = c.html;
+    return { kind: 'html', html: c.html, text: d.innerText };
+  });
+  try {
+    const r = await fetch('http://127.0.0.1:8766/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ blocks }) });
+    const j = await r.json();
+    toast(j.ok ? '⚡ 3초 안에 네이버 에디터 본문(붙여넣을 자리)을 클릭하세요. 끝날 때까지 손대지 마세요!' : j.msg);
+    if (j.ok) watchAuto();
+  } catch (e) {
+    toast('도우미가 꺼져 있어요 → 터미널에서: python3 ~/Desktop/블로그/tools/auto_paste.py');
+  }
+}
+// 진행 상황 표시 (도우미 상태를 1초마다 확인)
+function watchAuto() {
+  const st = document.getElementById('status');
+  const t = setInterval(async () => {
+    try {
+      const j = await (await fetch('http://127.0.0.1:8766/')).json();
+      st.innerHTML = '⚡ ' + j.msg;
+      if (!j.running) { clearInterval(t); toast(j.msg); }
+    } catch (e) { clearInterval(t); }
+  }, 1000);
+}
+document.getElementById('autoAll').onclick = () => {
+  const all = CH.filter(c => c.kind !== 'title');
+  if (confirm(`전체 ${all.length}개 블록(사진 ${all.filter(c => c.kind === 'image').length}장)을 자동으로 붙여넣을까요?\n시작 후 3초 안에 네이버 에디터 본문 첫 줄을 클릭하세요.\n끝날 때까지 키보드·마우스를 건드리지 마세요.`)) autoPaste(all);
+};
+document.getElementById('autoStop').onclick = async () => {
+  try { await fetch('http://127.0.0.1:8766/stop', { method: 'POST' }); toast('멈추는 중…'); } catch (e) { toast('도우미가 꺼져 있어요'); }
+};
+document.getElementById('secNext').onclick = nextSec;
+document.getElementById('secPrev').onclick = () => cur > 0 && copyAt(cur - 1);
+document.getElementById('copyText').onclick = () => copyWhole();
+document.getElementById('copyTitle').onclick = () => copyAt(0);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); nextSec(); }
+});
+
+let start = 0;
+try { start = Math.min(+localStorage.getItem('blogPasteTab') || 0, TABS.length - 1); } catch (e) {}
+CH = TABS[start].chunks; tab = start; showTab(start);
+</script>
+<a href="../../" style="position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;text-decoration:none;font-family:-apple-system,sans-serif;opacity:.9">← 목록</a></body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>붙여넣기 · 흰 민소매에 청바지만 입었는데, 트와이스 정연 새 프로필이 '배우 얼굴'이라는 이유 + 신병 더 무비 간호장교 (정연)</title>
+<style>
+  /* 네이버 인용구 컴포넌트 미리보기 (복사되는 HTML엔 영향 없음) */
+  .se-quotation-container { margin:8px auto; padding:14px 20px; max-width:560px; text-align:center;
+         border:none; font-family:'Nanum Myeongjo','나눔명조',serif; font-size:20px; color:#111; position:relative; }
+  .se-quotation-container::before { content:'“'; display:block; font-size:40px; line-height:1; color:#999; font-family:Georgia,serif; }
+  .se-quotation-container::after { content:''; display:block; width:120px; margin:10px auto 0; border-top:1px solid #ccc; }
+  .se-quotation-container p { margin:0; }
+  :root { --accent:#03c75a; --ink:#222; --muted:#888; --line:#e5e5e5; --done:#f3faf5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f5f6f7; color:var(--ink);
+         font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  .top { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  .tabs { display:flex; gap:4px; padding:10px 16px 0; overflow-x:auto; }
+  .tab { border:1px solid var(--line); border-bottom:none; background:#f5f6f7; border-radius:8px 8px 0 0;
+         padding:8px 16px; font-size:14px; cursor:pointer; white-space:nowrap; color:var(--muted); }
+  .tab.on { background:#fff; color:var(--ink); font-weight:600; box-shadow:inset 0 3px 0 var(--accent); }
+  .tab small { margin-left:6px; font-weight:400; color:var(--muted); }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+         border-top:1px solid var(--line); }
+  .bar button { border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px;
+                font-size:14px; cursor:pointer; }
+  .bar .next { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+  .bar .status { font-size:14px; color:var(--muted); }
+  .bar .status b { color:var(--ink); }
+  .help { font-size:12px; color:var(--muted); margin-left:auto; }
+  .paper { max-width:773px; margin:20px auto 80px; background:#fff; padding:32px 40px;
+           border:1px solid var(--line); }
+  .chunk { position:relative; padding:10px 12px; margin:0 -12px 6px; border-radius:8px;
+           border:2px dashed transparent; cursor:pointer; }
+  .chunk:hover { border-color:#cfe9d8; }
+  .chunk.current { border-color:var(--accent); border-style:solid; }
+  .chunk.done { background:var(--done); }
+  .chunk .no { position:absolute; left:-46px; top:8px; width:30px; height:22px; border-radius:11px;
+               background:#ddd; color:#fff; font-size:12px; text-align:center; line-height:22px; }
+  .chunk.current .no { background:var(--accent); }
+  .chunk.done .no { background:#9bd3ae; }
+  .chunk img { display:block; max-width:100%; margin:0 auto; }
+  .chunk.title { font-size:26px; font-weight:700; line-height:1.4; }
+  .kind { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .sec { display:flex; align-items:center; gap:10px; margin:22px -12px 8px; padding:8px 12px;
+         background:#eef8f1; border-radius:8px; font-size:13px; color:#2a6b40; }
+  .sec b { color:#174a2a; }
+  .sec button { margin-left:auto; border:1px solid var(--accent); background:#fff; color:#0a8a3e;
+                border-radius:6px; padding:6px 12px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .sec.current { background:var(--accent); color:#fff; }
+  .sec.current b { color:#fff; }
+  .sec.done button { background:#9bd3ae; border-color:#9bd3ae; color:#fff; }
+  .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#222; color:#fff;
+           padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s;
+           pointer-events:none; }
+  .toast.show { opacity:.92; }
+  @media (max-width:860px){ .paper{padding:20px 16px;margin:12px} .chunk .no{left:4px;top:4px} .help{display:none} }
+.bar button.auto{background:#ffcc00;color:#222;font-weight:700}
+.sec button.auto{background:#ffcc00;color:#222;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <button id="copyTitle">제목 복사</button>
+    <button id="secPrev">◀ 이전</button>
+    <button class="next" id="secNext">다음 복사 ▶</button>
+    <button id="copyText">본문 텍스트만 전체 복사</button>
+    <button class="auto" id="autoAll">⚡ 전체 자동 붙여넣기</button>
+    <button id="autoStop">■ 멈추기</button>
+    <span class="status" id="status"></span>
+    <span class="help">스페이스 = 다음 블록 복사 (글 → 사진 → 글 …) · 사진은 PNG 파일로 복사돼 네이버에 직접 올린 사진처럼 들어가요 (사진 수·대표이미지 OK) · 블록 클릭 = 그 블록만 복사 · 네이버에서 ⌘V</span>
+  </div>
+</div>
+<div class="paper" id="paper"></div>
+<div class="toast" id="toast"></div>
+<script>
+const TABS = [{"name": "B 연예 이슈", "style": "이슈", "title": "흰 민소매에 청바지만 입었는데, 트와이스 정연 새 프로필이 '배우 얼굴'이라는 이유 + 신병 더 무비 간호장교 (정연)", "chunks": [{"kind": "title", "text": "흰 민소매에 청바지만 입었는데, 트와이스 정연 새 프로필이 '배우 얼굴'이라는 이유 + 신병 더 무비 간호장교 (정연)", "html": "흰 민소매에 청바지만 입었는데, 트와이스 정연 새 프로필이 '배우 얼굴'이라는 이유 + 신병 더 무비 간호장교 (정연)", "sec": -1}, {"kind": "image", "src": "png/01.png", "name": "s1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">트와이스 <b><span style=\"font-size:18px\">정연<\/span><\/b>이 새 프로필 사진을 공개했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"이젠 진짜 배우 얼굴\"<\/span><\/b>이라는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">반응이 나올 만큼 분위기가 달라졌죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">스크린 데뷔를 앞두고 공개한<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">사진이라 더 눈길을 끌어요.<\/p>", "sec": 0, "text": "트와이스 정연이 새 프로필 사진을 공개했어요.\n\"이젠 진짜 배우 얼굴\"이라는\n반응이 나올 만큼 분위기가 달라졌죠.\n스크린 데뷔를 앞두고 공개한\n사진이라 더 눈길을 끌어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">\"New profile\" 앞머리 내린 긴 생머리<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "\"New profile\" 앞머리 내린 긴 생머리"}, {"kind": "image", "src": "png/02.png", "name": "s2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">정연은 17일 SNS에<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"New profile\"<\/span><\/b>이라는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">글과 함께 사진 여러 장을 올렸어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">앞머리를 내린 긴 생머리<\/span><\/b>에 <b><span style=\"font-size:18px\">흰색<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">민소매 톱과 청바지<\/span><\/b>를 매치했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">화려한 소품 없이 얼굴과 분위기만으로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">승부한 사진이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "정연은 17일 SNS에\n\"New profile\"이라는\n글과 함께 사진 여러 장을 올렸어요.\n앞머리를 내린 긴 생머리에 흰색\n민소매 톱과 청바지를 매치했어요.\n화려한 소품 없이 얼굴과 분위기만으로\n승부한 사진이에요."}, {"kind": "image", "src": "png/03.png", "name": "s3.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">꾸밈없는 <b><span style=\"font-size:18px\">베이직한 스타일링<\/span><\/b>인데도<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">뚜렷한 이목구비가 돋보이며<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">청순하면서 세련된 분위기를 냈어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "꾸밈없는 베이직한 스타일링인데도\n뚜렷한 이목구비가 돋보이며\n청순하면서 세련된 분위기를 냈어요."}, {"kind": "image", "src": "png/04.png", "name": "s4.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">스튜디오에서 <b><span style=\"font-size:18px\">헤어 스타일링<\/span><\/b>을 받는 모습부터<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">볼에 바람을 넣은 장난기<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">가득한 표정<\/span><\/b>까지 공개했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">프로필 속 차분한 모습과 달리<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">특유의 장난기는 여전했죠.<\/p>", "sec": 0, "text": "스튜디오에서 헤어 스타일링을 받는 모습부터\n볼에 바람을 넣은 장난기\n가득한 표정까지 공개했어요.\n프로필 속 차분한 모습과 달리\n특유의 장난기는 여전했죠."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">짧은 머리 시절과 비교하면<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "짧은 머리 시절과 비교하면"}, {"kind": "image", "src": "png/05.png", "name": "w0.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">정연은 그동안 <b><span style=\"font-size:18px\">숏컷·단발<\/span><\/b>로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">보이시한 매력을 보여 줬어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">그래서 이번 긴 생머리 프로필이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">더 새롭게 느껴진다는 반응이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "정연은 그동안 숏컷·단발로\n보이시한 매력을 보여 줬어요.\n그래서 이번 긴 생머리 프로필이\n더 새롭게 느껴진다는 반응이에요."}, {"kind": "image", "src": "png/06.png", "name": "w2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">행사장에서도 밝은 미소로 사랑받아 온 정연,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이번엔 한층 차분하고<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">성숙한 분위기를 보여 줬어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#555555;background-color:#fff8b2;font-size:19px\"><b>정연 근황 정리<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><ul style=\"margin:0;padding-left:22px;list-style-type:disc\"><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>프로필<\/b> : 11월 17일 SNS \"New profile\" 공개<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>스타일<\/b> : 앞머리 긴 생머리 + 흰 민소매 + 청바지<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>영화<\/b> : '신병 더 무비: 군병원에 귀신이 산다' 간호장교 정연 역<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>개봉<\/b> : 12월 30일<\/p><\/li><\/ul>", "sec": 0, "text": "행사장에서도 밝은 미소로 사랑받아 온 정연,\n이번엔 한층 차분하고\n성숙한 분위기를 보여 줬어요.\n\n\n정연 근황 정리\n\n\n프로필 : 11월 17일 SNS \"New profile\" 공개\n스타일 : 앞머리 긴 생머리 + 흰 민소매 + 청바지\n영화 : '신병 더 무비: 군병원에 귀신이 산다' 간호장교 정연 역\n개봉 : 12월 30일"}, {"kind": "text", "html": "<hr style=\"border:none;border-top:1px solid #cccccc;margin:24px 0\">", "sec": 0, "text": ""}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">스크린 데뷔작 '신병 더 무비'<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "스크린 데뷔작 '신병 더 무비'"}, {"kind": "image", "src": "png/07.png", "name": "m1.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">정연은 <b><span style=\"font-size:18px\">12월 30일<\/span><\/b> 개봉하는 영화<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'신병 더 무비: 군병원에 귀신이 산다'<\/span><\/b>로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">스크린에 데뷔해요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">군병원에 입원한 신병들이 끔찍한<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">소문을 마주하는 이야기예요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">인기 드라마 <b><span style=\"font-size:18px\">'신병'<\/span><\/b> 시리즈를<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">스크린으로 옮긴 작품이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "정연은 12월 30일 개봉하는 영화\n'신병 더 무비: 군병원에 귀신이 산다'로\n스크린에 데뷔해요.\n군병원에 입원한 신병들이 끔찍한\n소문을 마주하는 이야기예요.\n인기 드라마 '신병' 시리즈를\n스크린으로 옮긴 작품이에요."}, {"kind": "image", "src": "png/08.png", "name": "m2.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">정연은 <b><span style=\"font-size:18px\">'미모의 천사'<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">간호장교 정연<\/span><\/b> 역을 맡았어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">티저 포스터에선 상병 유재훈<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">역의 <b><span style=\"font-size:18px\">류경수<\/span><\/b>와 나란히 등장했죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">감독은 드라마 '신병'을<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">연출한 <b><span style=\"font-size:18px\">민진기<\/span><\/b> 감독이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "정연은 '미모의 천사'\n간호장교 정연 역을 맡았어요.\n티저 포스터에선 상병 유재훈\n역의 류경수와 나란히 등장했죠.\n감독은 드라마 '신병'을\n연출한 민진기 감독이에요."}, {"kind": "image", "src": "png/09.png", "name": "w3.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">트와이스 월드투어 무대에서도<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">꾸준히 팬들을 만나 온 정연,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이제는 배우로서 새 얼굴을 보여 줄 차례예요.<\/p>", "sec": 1, "text": "트와이스 월드투어 무대에서도\n꾸준히 팬들을 만나 온 정연,\n이제는 배우로서 새 얼굴을 보여 줄 차례예요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">✍ 핫이슈가 본 관전 포인트<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "✍ 핫이슈가 본 관전 포인트"}, {"kind": "image", "src": "png/10.png", "name": "w5.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">배우 활동을 앞두고 공개한<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">프로필이라 의미가 남다르네요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">간호장교 정연이 군병원 호러에서<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">어떤 매력을 보여 줄지 기대돼요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여러분은 긴 머리 정연, 어떠세요?<\/p>", "sec": 1, "text": "배우 활동을 앞두고 공개한\n프로필이라 의미가 남다르네요.\n간호장교 정연이 군병원 호러에서\n어떤 매력을 보여 줄지 기대돼요.\n여러분은 긴 머리 정연, 어떠세요?"}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"font-size:18px;color:#222222\"><b>📌 함께 보면 좋은 글<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "📌 함께 보면 좋은 글"}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224481170408", "name": "닥터X 인턴 김우석, 5·18 회차 논란에 꺼낸 첫마디는? + 코피 흘린 진짜 이유 (닥터X)", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224481170408<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480548185", "name": "결혼 발표 한 달 만에 구독자 10만, 솔비가 이규한에게 \"꿈 이뤄줘서 고마워\"라고 한 이유 + 가죽 재킷", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480548185<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224481180500", "name": "연봉 2500만 원 논란 3년 뒤, 강민경 회사가 내건 한 달 유급휴가 + 아비에무아 복지 (다비치)", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224481180500<\/p>", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">#정연 #트와이스정연 #유정연 #정연프로필 #정연근황 #트와이스 #TWICE #신병더무비 #신병 #군병원에귀신이산다 #간호장교 #정연배우 #정연스크린데뷔 #류경수 #김민호 #정연인스타 #정연앞머리 #12월개봉 #아이돌배우 #정연긴머리<\/p>", "sec": 1, "text": "#정연 #트와이스정연 #유정연 #정연프로필 #정연근황 #트와이스 #TWICE #신병더무비 #신병 #군병원에귀신이산다 #간호장교 #정연배우 #정연스크린데뷔 #류경수 #김민호 #정연인스타 #정연앞머리 #12월개봉 #아이돌배우 #정연긴머리"}], "missing": [], "secNames": ["도입 · \"New profile\" 앞머리 내린 긴 생머리 · 짧은 머리 시절과 비교하면 · 마무리", "스크린 데뷔작 '신병 더 무비' · ✍ 핫이슈가 본 관전 포인트 · 함께 보면 좋은 글"]}];
+const label = {title:'제목 칸에 붙여넣기', text:'본문', image:'이미지', link:'링크 주소 (붙여넣으면 썸네일 카드)'};
+const paper = document.getElementById('paper');
+let tab = 0, cur = -1;
+const state = TABS.map(() => ({cur: -1, done: new Set(), sec: -1, secDone: new Set()}));
+let CH = [], SECS = [], chunkEls = [];
+
+function showTab(t) {
+  state[tab].cur = cur;
+  tab = t; cur = state[t].cur; CH = TABS[t].chunks;
+  [...document.querySelectorAll('.tab')].forEach((el, k) => el.classList.toggle('on', k === t));
+  paper.innerHTML = ''; chunkEls = [];
+  SECS = [...new Set(CH.filter(c => c.kind !== 'title').map(c => c.sec))];
+  CH.forEach((c, i) => {
+    if (c.kind !== 'title' && (i === 0 || CH[i - 1].sec !== c.sec)) {
+      const si = SECS.indexOf(c.sec), cs = CH.filter(x => x.sec === c.sec);
+      const h = document.createElement('div');
+      h.className = 'sec' + (state[t].secDone.has(si) ? ' done' : '') + (si === state[t].sec ? ' current' : '');
+      h.dataset.si = si;
+      h.innerHTML = `<span>구역 <b>${si + 1}</b>/${SECS.length} · <b>${TABS[t].secNames[c.sec]}</b> · 사진 ${cs.filter(x => x.kind === 'image').length}장 (폴더: 구역별 사진/구역${c.sec + 1})</span>`;
+      const btn = document.createElement('button'); btn.textContent = '여기부터 복사';
+      btn.onclick = () => copyAt(CH.indexOf(cs[0])); h.appendChild(btn);
+      const ab = document.createElement('button'); ab.textContent = '⚡ 자동 붙여넣기'; ab.className = 'auto';
+      ab.onclick = e => { e.stopPropagation(); autoPaste(cs); }; h.appendChild(ab);
+      paper.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'chunk ' + c.kind + (state[t].done.has(i) ? ' done' : '') + (i === cur ? ' current' : '');
+    d.innerHTML = `<span class="no">${i + 1}</span><div class="kind">${label[c.kind]}${c.name ? ' · ' + c.name : ''}</div>`;
+    if (c.kind === 'image') { const im = new Image(); im.src = c.src; d.appendChild(im); }
+    else { const b = document.createElement('div'); b.innerHTML = c.html; d.appendChild(b); }
+    d.onclick = () => copyAt(i);
+    paper.appendChild(d); chunkEls.push(d);
+  });
+  try { localStorage.setItem('blogPasteTab', t); } catch (e) {}
+  render();
+}
+
+const tabsEl = document.getElementById('tabs');
+TABS.forEach((t, k) => {
+  const b = document.createElement('button');
+  b.className = 'tab';
+  b.innerHTML = `${t.name}<small>${t.style}</small>`;
+  b.onclick = () => showTab(k);
+  tabsEl.appendChild(b);
+});
+if (TABS.length < 2) tabsEl.style.display = 'none';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function toPng(src) {
+  const im = new Image(); im.src = src; await im.decode();
+  const cv = document.createElement('canvas');
+  cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext('2d').drawImage(im, 0, 0);
+  return new Promise(r => cv.toBlob(r, 'image/png'));
+}
+
+function legacyCopy(node) {
+  // 클립보드 API가 막힐 때 대비: 화면의 블록을 선택해서 복사
+  const sel = getSelection(), rg = document.createRange();
+  rg.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(rg);
+  const ok = document.execCommand('copy'); sel.removeAllRanges();
+  if (!ok) throw new Error('브라우저가 복사를 막았어요');
+}
+
+async function copyAt(i) {
+  const c = CH[i];
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      if (c.kind === 'image') throw new Error('이 브라우저는 사진 복사를 지원하지 않아요');
+      legacyCopy(chunkEls[i].lastElementChild);
+    } else if (c.kind === 'image') {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': toPng(c.src)})]);
+
+    } else if (c.kind === 'title' || c.kind === 'link') {
+      await navigator.clipboard.writeText(c.text);
+    } else {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([c.html], {type: 'text/html'}),
+        'text/plain': new Blob([c.text], {type: 'text/plain'}),
+      })]);
+    }
+  } catch (e) {
+    if (c.kind === 'image') {
+      // 링크 사진(HTML)으로 대신 복사하면 네이버 사진 수·대표이미지가 안 잡히므로 대체 복사는 하지 않는다
+      toast('사진 복사 실패 (' + e.name + ') · 사진을 우클릭(모바일은 길게 눌러) → 이미지 복사로 넣어주세요');
+      return;
+    }
+    try { legacyCopy(chunkEls[i].lastElementChild); }
+    catch (e2) { toast('복사 실패: ' + e.message); return; }
+  }
+  cur = i; state[tab].done.add(i);
+  const els = chunkEls;
+  els.forEach((el, k) => el.classList.toggle('current', k === i));
+  els[i].classList.add('done');
+  els[i].scrollIntoView({block: 'center', behavior: 'smooth'});
+  render();
+  toast(`${i + 1}번 ${c.kind === 'image' ? 'PNG 사진' : label[c.kind]} 복사됨 → 네이버에서 ⌘V`);
+}
+
+// ── 전체 복사 ─────────────────────────────
+// 텍스트만 한 번에, 이미지 자리는 [이미지 n · 파일명] 표시
+// (이미지 포함 일괄 붙여넣기는 네이버 로그아웃을 일으켜서 제거함)
+function bodyHtml() {
+  let n = 0;
+  return CH.filter(c => c.kind !== 'title').map(c => {
+    if (c.kind !== 'image') return c.html;
+    n++;
+    return `<p style="text-align:center"><span style="color:#d00;font-size:13px">[이미지 ${String(n).padStart(2,'0')} · ${c.name}]</span></p>`;
+  }).join('');
+}
+
+async function copyWhole() {
+  const html = bodyHtml();
+  const box = document.createElement('div');
+  box.innerHTML = html;
+  const plain = box.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([plain], {type: 'text/plain'}),
+    })]);
+  } catch (e) {
+    box.style.cssText = 'position:fixed;left:-99999px;top:0';
+    document.body.appendChild(box);
+    try { legacyCopy(box); } catch (e2) { box.remove(); toast('복사 실패: ' + e.message); return; }
+    box.remove();
+  }
+  const nImg = CH.filter(c => c.kind === 'image').length;
+  toast(`본문 텍스트 복사됨 → 이미지 ${nImg}장은 [이미지 n] 자리에 넣어주세요`);
+}
+
+function render() {
+  document.getElementById('status').innerHTML =
+    cur < 0 ? `총 <b>${CH.length}</b>개 블록 · 사진 ${CH.filter(c => c.kind === 'image').length}장` : `블록 <b>${cur + 1}</b> / ${CH.length}`;
+}
+// 한 블록씩: 글은 서식 그대로, 사진은 PNG 이미지 데이터로 (주소 링크가 아니라 파일처럼 올라감)
+const nextSec = () => {
+  const i = cur + 1;
+  if (i >= CH.length) return toast('마지막 블록이에요');
+  copyAt(i);
+};
+// ⚡ 자동 붙여넣기: 내 Mac의 도우미(auto_paste.py)가 글→⌘V→사진→⌘V 순서로 대신 붙여넣음
+async function autoPaste(cs) {
+  const blocks = cs.map(c => {
+    if (c.kind === 'image') return { kind: 'image', url: new URL(c.src, location.href).href };
+    if (c.kind === 'link') return { kind: 'url', text: c.text };
+    const d = document.createElement('div'); d.innerHTML = c.html;
+    return { kind: 'html', html: c.html, text: d.innerText };
+  });
+  try {
+    const r = await fetch('http://127.0.0.1:8766/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ blocks }) });
+    const j = await r.json();
+    toast(j.ok ? '⚡ 3초 안에 네이버 에디터 본문(붙여넣을 자리)을 클릭하세요. 끝날 때까지 손대지 마세요!' : j.msg);
+    if (j.ok) watchAuto();
+  } catch (e) {
+    toast('도우미가 꺼져 있어요 → 터미널에서: python3 ~/Desktop/블로그/tools/auto_paste.py');
+  }
+}
+// 진행 상황 표시 (도우미 상태를 1초마다 확인)
+function watchAuto() {
+  const st = document.getElementById('status');
+  const t = setInterval(async () => {
+    try {
+      const j = await (await fetch('http://127.0.0.1:8766/')).json();
+      st.innerHTML = '⚡ ' + j.msg;
+      if (!j.running) { clearInterval(t); toast(j.msg); }
+    } catch (e) { clearInterval(t); }
+  }, 1000);
+}
+document.getElementById('autoAll').onclick = () => {
+  const all = CH.filter(c => c.kind !== 'title');
+  if (confirm(`전체 ${all.length}개 블록(사진 ${all.filter(c => c.kind === 'image').length}장)을 자동으로 붙여넣을까요?\n시작 후 3초 안에 네이버 에디터 본문 첫 줄을 클릭하세요.\n끝날 때까지 키보드·마우스를 건드리지 마세요.`)) autoPaste(all);
+};
+document.getElementById('autoStop').onclick = async () => {
+  try { await fetch('http://127.0.0.1:8766/stop', { method: 'POST' }); toast('멈추는 중…'); } catch (e) { toast('도우미가 꺼져 있어요'); }
+};
+document.getElementById('secNext').onclick = nextSec;
+document.getElementById('secPrev').onclick = () => cur > 0 && copyAt(cur - 1);
+document.getElementById('copyText').onclick = () => copyWhole();
+document.getElementById('copyTitle').onclick = () => copyAt(0);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); nextSec(); }
+});
+
+let start = 0;
+try { start = Math.min(+localStorage.getItem('blogPasteTab') || 0, TABS.length - 1); } catch (e) {}
+CH = TABS[start].chunks; tab = start; showTab(start);
+</script>
+<a href="../../" style="position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;text-decoration:none;font-family:-apple-system,sans-serif;opacity:.9">← 목록</a></body>
+</html>

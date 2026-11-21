@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>붙여넣기 · 재혼 황후·닥터X 제치고 다시 1위, 100일의 거짓말 + 김유정 첫 출연자 1위 (100일의 거짓말)</title>
+<style>
+  /* 네이버 인용구 컴포넌트 미리보기 (복사되는 HTML엔 영향 없음) */
+  .se-quotation-container { margin:8px auto; padding:14px 20px; max-width:560px; text-align:center;
+         border:none; font-family:'Nanum Myeongjo','나눔명조',serif; font-size:20px; color:#111; position:relative; }
+  .se-quotation-container::before { content:'“'; display:block; font-size:40px; line-height:1; color:#999; font-family:Georgia,serif; }
+  .se-quotation-container::after { content:''; display:block; width:120px; margin:10px auto 0; border-top:1px solid #ccc; }
+  .se-quotation-container p { margin:0; }
+  :root { --accent:#03c75a; --ink:#222; --muted:#888; --line:#e5e5e5; --done:#f3faf5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f5f6f7; color:var(--ink);
+         font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  .top { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  .tabs { display:flex; gap:4px; padding:10px 16px 0; overflow-x:auto; }
+  .tab { border:1px solid var(--line); border-bottom:none; background:#f5f6f7; border-radius:8px 8px 0 0;
+         padding:8px 16px; font-size:14px; cursor:pointer; white-space:nowrap; color:var(--muted); }
+  .tab.on { background:#fff; color:var(--ink); font-weight:600; box-shadow:inset 0 3px 0 var(--accent); }
+  .tab small { margin-left:6px; font-weight:400; color:var(--muted); }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+         border-top:1px solid var(--line); }
+  .bar button { border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px;
+                font-size:14px; cursor:pointer; }
+  .bar .next { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+  .bar .status { font-size:14px; color:var(--muted); }
+  .bar .status b { color:var(--ink); }
+  .help { font-size:12px; color:var(--muted); margin-left:auto; }
+  .paper { max-width:773px; margin:20px auto 80px; background:#fff; padding:32px 40px;
+           border:1px solid var(--line); }
+  .chunk { position:relative; padding:10px 12px; margin:0 -12px 6px; border-radius:8px;
+           border:2px dashed transparent; cursor:pointer; }
+  .chunk:hover { border-color:#cfe9d8; }
+  .chunk.current { border-color:var(--accent); border-style:solid; }
+  .chunk.done { background:var(--done); }
+  .chunk .no { position:absolute; left:-46px; top:8px; width:30px; height:22px; border-radius:11px;
+               background:#ddd; color:#fff; font-size:12px; text-align:center; line-height:22px; }
+  .chunk.current .no { background:var(--accent); }
+  .chunk.done .no { background:#9bd3ae; }
+  .chunk img { display:block; max-width:100%; margin:0 auto; }
+  .chunk.title { font-size:26px; font-weight:700; line-height:1.4; }
+  .kind { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .sec { display:flex; align-items:center; gap:10px; margin:22px -12px 8px; padding:8px 12px;
+         background:#eef8f1; border-radius:8px; font-size:13px; color:#2a6b40; }
+  .sec b { color:#174a2a; }
+  .sec button { margin-left:auto; border:1px solid var(--accent); background:#fff; color:#0a8a3e;
+                border-radius:6px; padding:6px 12px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .sec.current { background:var(--accent); color:#fff; }
+  .sec.current b { color:#fff; }
+  .sec.done button { background:#9bd3ae; border-color:#9bd3ae; color:#fff; }
+  .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#222; color:#fff;
+           padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s;
+           pointer-events:none; }
+  .toast.show { opacity:.92; }
+  @media (max-width:860px){ .paper{padding:20px 16px;margin:12px} .chunk .no{left:4px;top:4px} .help{display:none} }
+.bar button.auto{background:#ffcc00;color:#222;font-weight:700}
+.sec button.auto{background:#ffcc00;color:#222;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <button id="copyTitle">제목 복사</button>
+    <button id="secPrev">◀ 이전</button>
+    <button class="next" id="secNext">다음 복사 ▶</button>
+    <button id="copyText">본문 텍스트만 전체 복사</button>
+    <button class="auto" id="autoAll">⚡ 전체 자동 붙여넣기</button>
+    <button id="autoStop">■ 멈추기</button>
+    <span class="status" id="status"></span>
+    <span class="help">스페이스 = 다음 블록 복사 (글 → 사진 → 글 …) · 사진은 PNG 파일로 복사돼 네이버에 직접 올린 사진처럼 들어가요 (사진 수·대표이미지 OK) · 블록 클릭 = 그 블록만 복사 · 네이버에서 ⌘V</span>
+  </div>
+</div>
+<div class="paper" id="paper"></div>
+<div class="toast" id="toast"></div>
+<script>
+const TABS = [{"name": "B 연예 이슈", "style": "이슈", "title": "재혼 황후·닥터X 제치고 다시 1위, 100일의 거짓말 + 김유정 첫 출연자 1위 (100일의 거짓말)", "chunks": [{"kind": "title", "text": "재혼 황후·닥터X 제치고 다시 1위, 100일의 거짓말 + 김유정 첫 출연자 1위 (100일의 거짓말)", "html": "재혼 황후·닥터X 제치고 다시 1위, 100일의 거짓말 + 김유정 첫 출연자 1위 (100일의 거짓말)", "sec": -1}, {"kind": "image", "src": "png/01.png", "name": "a1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">tvN 토일드라마 <b><span style=\"font-size:18px\">'100일의 거짓말'<\/span><\/b>이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">화제성 정상을 되찾았어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">디즈니+ <b><span style=\"font-size:18px\">'재혼 황후'<\/span><\/b>와 SBS<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'닥터X'<\/span><\/b>를 모두 제쳤죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">주연 <b><span style=\"font-size:18px\">김유정<\/span><\/b>은 첫 방송 이후 처음으로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">출연자 화제성 1위에 올랐어요.<\/p>", "sec": 0, "text": "tvN 토일드라마 '100일의 거짓말'이\n화제성 정상을 되찾았어요.\n디즈니+ '재혼 황후'와 SBS\n'닥터X'를 모두 제쳤죠.\n주연 김유정은 첫 방송 이후 처음으로\n출연자 화제성 1위에 올랐어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">한 주 만에 되찾은 1위<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "한 주 만에 되찾은 1위"}, {"kind": "image", "src": "png/02.png", "name": "p1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">굿데이터코퍼레이션 펀덱스의 <b><span style=\"font-size:18px\">11월 2주차<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">TV-OTT 통합 드라마 화제성에서<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">'100일의 거짓말'은<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">점유율 <b><span style=\"font-size:18px\">19.08%<\/span><\/b>로 1위를 차지했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">직전 주 18.36%보다 더 올랐어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "굿데이터코퍼레이션 펀덱스의 11월 2주차\nTV-OTT 통합 드라마 화제성에서\n'100일의 거짓말'은\n점유율 19.08%로 1위를 차지했어요.\n직전 주 18.36%보다 더 올랐어요."}, {"kind": "image", "src": "png/03.png", "name": "r1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">한 주 전 1위였던<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">'재혼 황후'는 <b><span style=\"font-size:18px\">21.16%에서 13.96%<\/span><\/b>로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">떨어지며 2위로 내려갔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">두 작품의 차이는 <b><span style=\"font-size:18px\">5.12%포인트<\/span><\/b>로 벌어졌죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "한 주 전 1위였던\n'재혼 황후'는 21.16%에서 13.96%로\n떨어지며 2위로 내려갔어요.\n두 작품의 차이는 5.12%포인트로 벌어졌죠."}, {"kind": "image", "src": "png/04.png", "name": "p2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">'100일의 거짓말'은 10월 4·5주차 1위를<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">지키다 11월 1주차에<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">잠시 자리를 내줬는데,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">한 주 만에 선두를 되찾았어요<\/span><\/b>.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#555555;background-color:#fff8b2;font-size:19px\"><b>11월 2주차 드라마 화제성 (펀덱스)<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><ul style=\"margin:0;padding-left:22px;list-style-type:disc\"><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>1위 작품<\/b> : 100일의 거짓말 19.08%<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>2위 작품<\/b> : 재혼 황후 13.96% (21.16%에서 하락)<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>출연자 1·2위<\/b> : 김유정 7.33% · 박진영 6.96%<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>출연자 3위<\/b> : 김지원(닥터X) 5.14%<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>재혼 황후<\/b> : 이종석 5위 · 신민아 6위 · 주지훈 9위<\/p><\/li><\/ul>", "sec": 0, "text": "'100일의 거짓말'은 10월 4·5주차 1위를\n지키다 11월 1주차에\n잠시 자리를 내줬는데,\n한 주 만에 선두를 되찾았어요.\n\n\n11월 2주차 드라마 화제성 (펀덱스)\n\n\n1위 작품 : 100일의 거짓말 19.08%\n2위 작품 : 재혼 황후 13.96% (21.16%에서 하락)\n출연자 1·2위 : 김유정 7.33% · 박진영 6.96%\n출연자 3위 : 김지원(닥터X) 5.14%\n재혼 황후 : 이종석 5위 · 신민아 6위 · 주지훈 9위"}, {"kind": "text", "html": "<hr style=\"border:none;border-top:1px solid #cccccc;margin:24px 0\">", "sec": 0, "text": ""}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">김유정, 박진영 넘어 첫 출연자 1위<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "김유정, 박진영 넘어 첫 출연자 1위"}, {"kind": "image", "src": "png/05.png", "name": "a2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">출연자 부문에선<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">김유정<\/span><\/b>이 <b><span style=\"font-size:18px\">7.33%<\/span><\/b>로 1위에 올랐어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">지난주 1위였던<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">박진영<\/span><\/b>은 6.96%로 2위,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">두 사람 차이는 <b><span style=\"font-size:18px\">0.37%포인트<\/span><\/b>였어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "출연자 부문에선\n김유정이 7.33%로 1위에 올랐어요.\n지난주 1위였던\n박진영은 6.96%로 2위,\n두 사람 차이는 0.37%포인트였어요."}, {"kind": "image", "src": "png/06.png", "name": "e1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">그동안은 '닥터X'의 <b><span style=\"font-size:18px\">김지원<\/span><\/b>과<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">박진영이 번갈아 정상을 차지했는데,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이번엔 같은 작품 두 주연이 1·2위를<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">나란히 가져갔어요.<\/p>", "sec": 0, "text": "그동안은 '닥터X'의 김지원과\n박진영이 번갈아 정상을 차지했는데,\n이번엔 같은 작품 두 주연이 1·2위를\n나란히 가져갔어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">본명 확인부터 총구까지, 12회 10.4%<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "본명 확인부터 총구까지, 12회 10.4%"}, {"kind": "image", "src": "png/07.png", "name": "e2.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">14일 11회에선 이가경과 김태웅이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">가명 뒤에 숨긴 진짜 이름<\/span><\/b>을 확인했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "14일 11회에선 이가경과 김태웅이\n가명 뒤에 숨긴 진짜 이름을 확인했어요."}, {"kind": "image", "src": "png/08.png", "name": "e3.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">15일 12회는 구국단의 <b><span style=\"font-size:18px\">폭탄 작전<\/span><\/b>을<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">한 회 전체에 걸쳐 그렸어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">유소란(김현주)과 유필립(이무생)이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">사토 신이치의 초대를<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">받으며 긴장감이 높아졌죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "15일 12회는 구국단의 폭탄 작전을\n한 회 전체에 걸쳐 그렸어요.\n유소란(김현주)과 유필립(이무생)이\n사토 신이치의 초대를\n받으며 긴장감이 높아졌죠."}, {"kind": "image", "src": "png/09.png", "name": "e4.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">작전은 순조롭지 않았고,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이가경은 위기 속에서 기지를 발휘했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">12회 시청률은<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">수도권 <b><span style=\"font-size:18px\">11.1%(최고 12.1%)<\/span><\/b>,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">전국 <b><span style=\"font-size:18px\">10.4%<\/span><\/b>를 찍었어요.<\/p>", "sec": 1, "text": "작전은 순조롭지 않았고,\n이가경은 위기 속에서 기지를 발휘했어요.\n12회 시청률은\n수도권 11.1%(최고 12.1%),\n전국 10.4%를 찍었어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">✍ 핫이슈가 본 관전 포인트<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "✍ 핫이슈가 본 관전 포인트"}, {"kind": "image", "src": "png/10.png", "name": "e5.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">진짜 이름을 확인하자마자 김태웅이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이가경에게 총구를 겨누게 됐네요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">화제성과 시청률을 모두 잡은 지금,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">남은 회차가 더 기대돼요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여러분은 이가경과 김태웅, 끝까지<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">함께할 수 있을 거라 보시나요?<\/p>", "sec": 1, "text": "진짜 이름을 확인하자마자 김태웅이\n이가경에게 총구를 겨누게 됐네요.\n화제성과 시청률을 모두 잡은 지금,\n남은 회차가 더 기대돼요.\n여러분은 이가경과 김태웅, 끝까지\n함께할 수 있을 거라 보시나요?"}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"font-size:18px;color:#222222\"><b>📌 함께 보면 좋은 글<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "📌 함께 보면 좋은 글"}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480390098", "name": "대본으로 한글 뗀 아역에서 24년 차 배우로, 김유정 손글씨 다짐 \"무뎌지지는 말자\" + 화제성 1위 (10", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480390098<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224481213719", "name": "중2에 잡지 모델 1등 한 신민아, 배우가 된 이유가 학교 안 가서 좋았다는 걸까? + 이은지 길연 (재혼", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224481213719<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480731968", "name": "'굿파트너2' 첫방 앞두고 다시 소환된 김지상, 지승현은 왜 대국민 사과를 세 번이나 했을까? + 딸 재희", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480731968<\/p>", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">#100일의거짓말 #김유정 #박진영 #화제성1위 #펀덱스 #굿데이터 #재혼황후 #닥터X #신민아 #이종석 #주지훈 #김지원 #시청률10% #tvN드라마 #토일드라마 #100일의거짓말12회 #이무생 #김현주 #드라마화제성 #출연자화제성<\/p>", "sec": 1, "text": "#100일의거짓말 #김유정 #박진영 #화제성1위 #펀덱스 #굿데이터 #재혼황후 #닥터X #신민아 #이종석 #주지훈 #김지원 #시청률10% #tvN드라마 #토일드라마 #100일의거짓말12회 #이무생 #김현주 #드라마화제성 #출연자화제성"}], "missing": [], "secNames": ["도입 · 한 주 만에 되찾은 1위 · 마무리 · 김유정, 박진영 넘어 첫 출연자 1위", "본명 확인부터 총구까지, 12회 10.4% · ✍ 핫이슈가 본 관전 포인트 · 함께 보면 좋은 글"]}];
+const label = {title:'제목 칸에 붙여넣기', text:'본문', image:'이미지', link:'링크 주소 (붙여넣으면 썸네일 카드)'};
+const paper = document.getElementById('paper');
+let tab = 0, cur = -1;
+const state = TABS.map(() => ({cur: -1, done: new Set(), sec: -1, secDone: new Set()}));
+let CH = [], SECS = [], chunkEls = [];
+
+function showTab(t) {
+  state[tab].cur = cur;
+  tab = t; cur = state[t].cur; CH = TABS[t].chunks;
+  [...document.querySelectorAll('.tab')].forEach((el, k) => el.classList.toggle('on', k === t));
+  paper.innerHTML = ''; chunkEls = [];
+  SECS = [...new Set(CH.filter(c => c.kind !== 'title').map(c => c.sec))];
+  CH.forEach((c, i) => {
+    if (c.kind !== 'title' && (i === 0 || CH[i - 1].sec !== c.sec)) {
+      const si = SECS.indexOf(c.sec), cs = CH.filter(x => x.sec === c.sec);
+      const h = document.createElement('div');
+      h.className = 'sec' + (state[t].secDone.has(si) ? ' done' : '') + (si === state[t].sec ? ' current' : '');
+      h.dataset.si = si;
+      h.innerHTML = `<span>구역 <b>${si + 1}</b>/${SECS.length} · <b>${TABS[t].secNames[c.sec]}</b> · 사진 ${cs.filter(x => x.kind === 'image').length}장 (폴더: 구역별 사진/구역${c.sec + 1})</span>`;
+      const btn = document.createElement('button'); btn.textContent = '여기부터 복사';
+      btn.onclick = () => copyAt(CH.indexOf(cs[0])); h.appendChild(btn);
+      const ab = document.createElement('button'); ab.textContent = '⚡ 자동 붙여넣기'; ab.className = 'auto';
+      ab.onclick = e => { e.stopPropagation(); autoPaste(cs); }; h.appendChild(ab);
+      paper.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'chunk ' + c.kind + (state[t].done.has(i) ? ' done' : '') + (i === cur ? ' current' : '');
+    d.innerHTML = `<span class="no">${i + 1}</span><div class="kind">${label[c.kind]}${c.name ? ' · ' + c.name : ''}</div>`;
+    if (c.kind === 'image') { const im = new Image(); im.src = c.src; d.appendChild(im); }
+    else { const b = document.createElement('div'); b.innerHTML = c.html; d.appendChild(b); }
+    d.onclick = () => copyAt(i);
+    paper.appendChild(d); chunkEls.push(d);
+  });
+  try { localStorage.setItem('blogPasteTab', t); } catch (e) {}
+  render();
+}
+
+const tabsEl = document.getElementById('tabs');
+TABS.forEach((t, k) => {
+  const b = document.createElement('button');
+  b.className = 'tab';
+  b.innerHTML = `${t.name}<small>${t.style}</small>`;
+  b.onclick = () => showTab(k);
+  tabsEl.appendChild(b);
+});
+if (TABS.length < 2) tabsEl.style.display = 'none';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function toPng(src) {
+  const im = new Image(); im.src = src; await im.decode();
+  const cv = document.createElement('canvas');
+  cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext('2d').drawImage(im, 0, 0);
+  return new Promise(r => cv.toBlob(r, 'image/png'));
+}
+
+function legacyCopy(node) {
+  // 클립보드 API가 막힐 때 대비: 화면의 블록을 선택해서 복사
+  const sel = getSelection(), rg = document.createRange();
+  rg.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(rg);
+  const ok = document.execCommand('copy'); sel.removeAllRanges();
+  if (!ok) throw new Error('브라우저가 복사를 막았어요');
+}
+
+async function copyAt(i) {
+  const c = CH[i];
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      if (c.kind === 'image') throw new Error('이 브라우저는 사진 복사를 지원하지 않아요');
+      legacyCopy(chunkEls[i].lastElementChild);
+    } else if (c.kind === 'image') {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': toPng(c.src)})]);
+
+    } else if (c.kind === 'title' || c.kind === 'link') {
+      await navigator.clipboard.writeText(c.text);
+    } else {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([c.html], {type: 'text/html'}),
+        'text/plain': new Blob([c.text], {type: 'text/plain'}),
+      })]);
+    }
+  } catch (e) {
+    if (c.kind === 'image') {
+      // 링크 사진(HTML)으로 대신 복사하면 네이버 사진 수·대표이미지가 안 잡히므로 대체 복사는 하지 않는다
+      toast('사진 복사 실패 (' + e.name + ') · 사진을 우클릭(모바일은 길게 눌러) → 이미지 복사로 넣어주세요');
+      return;
+    }
+    try { legacyCopy(chunkEls[i].lastElementChild); }
+    catch (e2) { toast('복사 실패: ' + e.message); return; }
+  }
+  cur = i; state[tab].done.add(i);
+  const els = chunkEls;
+  els.forEach((el, k) => el.classList.toggle('current', k === i));
+  els[i].classList.add('done');
+  els[i].scrollIntoView({block: 'center', behavior: 'smooth'});
+  render();
+  toast(`${i + 1}번 ${c.kind === 'image' ? 'PNG 사진' : label[c.kind]} 복사됨 → 네이버에서 ⌘V`);
+}
+
+// ── 전체 복사 ─────────────────────────────
+// 텍스트만 한 번에, 이미지 자리는 [이미지 n · 파일명] 표시
+// (이미지 포함 일괄 붙여넣기는 네이버 로그아웃을 일으켜서 제거함)
+function bodyHtml() {
+  let n = 0;
+  return CH.filter(c => c.kind !== 'title').map(c => {
+    if (c.kind !== 'image') return c.html;
+    n++;
+    return `<p style="text-align:center"><span style="color:#d00;font-size:13px">[이미지 ${String(n).padStart(2,'0')} · ${c.name}]</span></p>`;
+  }).join('');
+}
+
+async function copyWhole() {
+  const html = bodyHtml();
+  const box = document.createElement('div');
+  box.innerHTML = html;
+  const plain = box.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([plain], {type: 'text/plain'}),
+    })]);
+  } catch (e) {
+    box.style.cssText = 'position:fixed;left:-99999px;top:0';
+    document.body.appendChild(box);
+    try { legacyCopy(box); } catch (e2) { box.remove(); toast('복사 실패: ' + e.message); return; }
+    box.remove();
+  }
+  const nImg = CH.filter(c => c.kind === 'image').length;
+  toast(`본문 텍스트 복사됨 → 이미지 ${nImg}장은 [이미지 n] 자리에 넣어주세요`);
+}
+
+function render() {
+  document.getElementById('status').innerHTML =
+    cur < 0 ? `총 <b>${CH.length}</b>개 블록 · 사진 ${CH.filter(c => c.kind === 'image').length}장` : `블록 <b>${cur + 1}</b> / ${CH.length}`;
+}
+// 한 블록씩: 글은 서식 그대로, 사진은 PNG 이미지 데이터로 (주소 링크가 아니라 파일처럼 올라감)
+const nextSec = () => {
+  const i = cur + 1;
+  if (i >= CH.length) return toast('마지막 블록이에요');
+  copyAt(i);
+};
+// ⚡ 자동 붙여넣기: 내 Mac의 도우미(auto_paste.py)가 글→⌘V→사진→⌘V 순서로 대신 붙여넣음
+async function autoPaste(cs) {
+  const blocks = cs.map(c => {
+    if (c.kind === 'image') return { kind: 'image', url: new URL(c.src, location.href).href };
+    if (c.kind === 'link') return { kind: 'url', text: c.text };
+    const d = document.createElement('div'); d.innerHTML = c.html;
+    return { kind: 'html', html: c.html, text: d.innerText };
+  });
+  try {
+    const r = await fetch('http://127.0.0.1:8766/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ blocks }) });
+    const j = await r.json();
+    toast(j.ok ? '⚡ 3초 안에 네이버 에디터 본문(붙여넣을 자리)을 클릭하세요. 끝날 때까지 손대지 마세요!' : j.msg);
+    if (j.ok) watchAuto();
+  } catch (e) {
+    toast('도우미가 꺼져 있어요 → 터미널에서: python3 ~/Desktop/블로그/tools/auto_paste.py');
+  }
+}
+// 진행 상황 표시 (도우미 상태를 1초마다 확인)
+function watchAuto() {
+  const st = document.getElementById('status');
+  const t = setInterval(async () => {
+    try {
+      const j = await (await fetch('http://127.0.0.1:8766/')).json();
+      st.innerHTML = '⚡ ' + j.msg;
+      if (!j.running) { clearInterval(t); toast(j.msg); }
+    } catch (e) { clearInterval(t); }
+  }, 1000);
+}
+document.getElementById('autoAll').onclick = () => {
+  const all = CH.filter(c => c.kind !== 'title');
+  if (confirm(`전체 ${all.length}개 블록(사진 ${all.filter(c => c.kind === 'image').length}장)을 자동으로 붙여넣을까요?\n시작 후 3초 안에 네이버 에디터 본문 첫 줄을 클릭하세요.\n끝날 때까지 키보드·마우스를 건드리지 마세요.`)) autoPaste(all);
+};
+document.getElementById('autoStop').onclick = async () => {
+  try { await fetch('http://127.0.0.1:8766/stop', { method: 'POST' }); toast('멈추는 중…'); } catch (e) { toast('도우미가 꺼져 있어요'); }
+};
+document.getElementById('secNext').onclick = nextSec;
+document.getElementById('secPrev').onclick = () => cur > 0 && copyAt(cur - 1);
+document.getElementById('copyText').onclick = () => copyWhole();
+document.getElementById('copyTitle').onclick = () => copyAt(0);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); nextSec(); }
+});
+
+let start = 0;
+try { start = Math.min(+localStorage.getItem('blogPasteTab') || 0, TABS.length - 1); } catch (e) {}
+CH = TABS[start].chunks; tab = start; showTab(start);
+</script>
+<a href="../../" style="position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;text-decoration:none;font-family:-apple-system,sans-serif;opacity:.9">← 목록</a></body>
+</html>
