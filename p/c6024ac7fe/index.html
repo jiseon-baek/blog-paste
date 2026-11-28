@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>붙여넣기 · 법정구속에서 대법 무죄까지, 3년 8개월 만에 SNS 연 안성현과 성유리의 '좋아요' + 핑클 완전체 (성유리)</title>
+<style>
+  /* 네이버 인용구 컴포넌트 미리보기 (복사되는 HTML엔 영향 없음) */
+  .se-quotation-container { margin:8px auto; padding:14px 20px; max-width:560px; text-align:center;
+         border:none; font-family:'Nanum Myeongjo','나눔명조',serif; font-size:20px; color:#111; position:relative; }
+  .se-quotation-container::before { content:'“'; display:block; font-size:40px; line-height:1; color:#999; font-family:Georgia,serif; }
+  .se-quotation-container::after { content:''; display:block; width:120px; margin:10px auto 0; border-top:1px solid #ccc; }
+  .se-quotation-container p { margin:0; }
+  :root { --accent:#03c75a; --ink:#222; --muted:#888; --line:#e5e5e5; --done:#f3faf5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f5f6f7; color:var(--ink);
+         font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  .top { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  .tabs { display:flex; gap:4px; padding:10px 16px 0; overflow-x:auto; }
+  .tab { border:1px solid var(--line); border-bottom:none; background:#f5f6f7; border-radius:8px 8px 0 0;
+         padding:8px 16px; font-size:14px; cursor:pointer; white-space:nowrap; color:var(--muted); }
+  .tab.on { background:#fff; color:var(--ink); font-weight:600; box-shadow:inset 0 3px 0 var(--accent); }
+  .tab small { margin-left:6px; font-weight:400; color:var(--muted); }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+         border-top:1px solid var(--line); }
+  .bar button { border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px;
+                font-size:14px; cursor:pointer; }
+  .bar .next { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+  .bar .status { font-size:14px; color:var(--muted); }
+  .bar .status b { color:var(--ink); }
+  .help { font-size:12px; color:var(--muted); margin-left:auto; }
+  .paper { max-width:773px; margin:20px auto 80px; background:#fff; padding:32px 40px;
+           border:1px solid var(--line); }
+  .chunk { position:relative; padding:10px 12px; margin:0 -12px 6px; border-radius:8px;
+           border:2px dashed transparent; cursor:pointer; }
+  .chunk:hover { border-color:#cfe9d8; }
+  .chunk.current { border-color:var(--accent); border-style:solid; }
+  .chunk.done { background:var(--done); }
+  .chunk .no { position:absolute; left:-46px; top:8px; width:30px; height:22px; border-radius:11px;
+               background:#ddd; color:#fff; font-size:12px; text-align:center; line-height:22px; }
+  .chunk.current .no { background:var(--accent); }
+  .chunk.done .no { background:#9bd3ae; }
+  .chunk img { display:block; max-width:100%; margin:0 auto; }
+  .chunk.title { font-size:26px; font-weight:700; line-height:1.4; }
+  .kind { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .sec { display:flex; align-items:center; gap:10px; margin:22px -12px 8px; padding:8px 12px;
+         background:#eef8f1; border-radius:8px; font-size:13px; color:#2a6b40; }
+  .sec b { color:#174a2a; }
+  .sec button { margin-left:auto; border:1px solid var(--accent); background:#fff; color:#0a8a3e;
+                border-radius:6px; padding:6px 12px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .sec.current { background:var(--accent); color:#fff; }
+  .sec.current b { color:#fff; }
+  .sec.done button { background:#9bd3ae; border-color:#9bd3ae; color:#fff; }
+  .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#222; color:#fff;
+           padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s;
+           pointer-events:none; }
+  .toast.show { opacity:.92; }
+  @media (max-width:860px){ .paper{padding:20px 16px;margin:12px} .chunk .no{left:4px;top:4px} .help{display:none} }
+.bar button.auto{background:#ffcc00;color:#222;font-weight:700}
+.sec button.auto{background:#ffcc00;color:#222;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <button id="copyTitle">제목 복사</button>
+    <button id="secPrev">◀ 이전</button>
+    <button class="next" id="secNext">다음 복사 ▶</button>
+    <button id="copyText">본문 텍스트만 전체 복사</button>
+    <button class="auto" id="autoAll">⚡ 전체 자동 붙여넣기</button>
+    <button id="autoStop">■ 멈추기</button>
+    <span class="status" id="status"></span>
+    <span class="help">스페이스 = 다음 블록 복사 (글 → 사진 → 글 …) · 사진은 PNG 파일로 복사돼 네이버에 직접 올린 사진처럼 들어가요 (사진 수·대표이미지 OK) · 블록 클릭 = 그 블록만 복사 · 네이버에서 ⌘V</span>
+  </div>
+</div>
+<div class="paper" id="paper"></div>
+<div class="toast" id="toast"></div>
+<script>
+const TABS = [{"name": "B 연예 이슈", "style": "이슈", "title": "법정구속에서 대법 무죄까지, 3년 8개월 만에 SNS 연 안성현과 성유리의 '좋아요' + 핑클 완전체 (성유리)", "chunks": [{"kind": "title", "text": "법정구속에서 대법 무죄까지, 3년 8개월 만에 SNS 연 안성현과 성유리의 '좋아요' + 핑클 완전체 (성유리)", "html": "법정구속에서 대법 무죄까지, 3년 8개월 만에 SNS 연 안성현과 성유리의 '좋아요' + 핑클 완전체 (성유리)", "sec": -1}, {"kind": "image", "src": "png/01.png", "name": "w0.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">핑클 출신 <b><span style=\"font-size:18px\">성유리<\/span><\/b>가 남편<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">안성현<\/span><\/b>을 공개적으로 응원했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">대법원에서 <b><span style=\"font-size:18px\">무죄가 확정<\/span><\/b>된 직후,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">안성현이 <b><span style=\"font-size:18px\">3년 8개월 만에<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">SNS 활동<\/span><\/b>을 재개했거든요.<\/p>", "sec": 0, "text": "핑클 출신 성유리가 남편\n안성현을 공개적으로 응원했어요.\n대법원에서 무죄가 확정된 직후,\n안성현이 3년 8개월 만에\nSNS 활동을 재개했거든요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">3년 8개월 만의 게시물, 그리고 '좋아요'<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "3년 8개월 만의 게시물, 그리고 '좋아요'"}, {"kind": "image", "src": "png/02.png", "name": "h1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">프로골퍼 안성현은 17일 자신이<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">운영하는 <b><span style=\"font-size:18px\">골프 아카데미 선수들의<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">성적<\/span><\/b>을 소개하는 글을 올렸어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">2023년 3월 이후<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">약 3년 8개월 만<\/span><\/b>의 게시물이었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "프로골퍼 안성현은 17일 자신이\n운영하는 골프 아카데미 선수들의\n성적을 소개하는 글을 올렸어요.\n2023년 3월 이후\n약 3년 8개월 만의 게시물이었어요."}, {"kind": "image", "src": "png/03.png", "name": "w1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">개인적인 근황을 전한 글은 아니었지만,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">아내 성유리가 해당 게시물에<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'좋아요'<\/span><\/b>를 누르며 응원했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "개인적인 근황을 전한 글은 아니었지만,\n아내 성유리가 해당 게시물에\n'좋아요'를 누르며 응원했어요."}, {"kind": "image", "src": "png/04.png", "name": "h2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">성유리는 재판이 진행<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">중이던 2024년 1월 1일에도<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"우리 가정이 겪고 있는 억울하고<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">힘든 일들에 대한 진실이 밝혀지길<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">간절히 기도한다\"<\/span><\/b>고 적었어요.<\/p>", "sec": 0, "text": "성유리는 재판이 진행\n중이던 2024년 1월 1일에도\n\"우리 가정이 겪고 있는 억울하고\n힘든 일들에 대한 진실이 밝혀지길\n간절히 기도한다\"고 적었어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">1심 징역 4년 6개월 → 대법 무죄<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "1심 징역 4년 6개월 → 대법 무죄"}, {"kind": "image", "src": "png/05.png", "name": "w2.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">안성현은 2021년 가상자산<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">빗썸 상장 청탁<\/span><\/b>과 함께 금품을<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">받은 혐의 등으로 기소됐어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">1심은 일부 혐의를 유죄<\/span><\/b>로 보고<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">징역 4년 6개월을 선고하며 법정구속했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 0, "text": "안성현은 2021년 가상자산\n빗썸 상장 청탁과 함께 금품을\n받은 혐의 등으로 기소됐어요.\n1심은 일부 혐의를 유죄로 보고\n징역 4년 6개월을 선고하며 법정구속했어요."}, {"kind": "image", "src": "png/06.png", "name": "c1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">하지만 <b><span style=\"font-size:18px\">항소심은 무죄<\/span><\/b>를 선고했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">금품을 상장 청탁의 대가로 건넸다는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">진술의 <b><span style=\"font-size:18px\">신빙성이 부족<\/span><\/b>하다고 봤죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">대법원 2부는 지난 12일 검찰의<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">상고를 기각하며 <b><span style=\"font-size:18px\">무죄를 확정<\/span><\/b>했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#555555;background-color:#fff8b2;font-size:19px\"><b>안성현 재판 정리<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><ul style=\"margin:0;padding-left:22px;list-style-type:disc\"><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>혐의<\/b> : 특경법 위반(사기)·배임수재 (가상자산 상장 청탁 관련)<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>1심<\/b> : 일부 유죄, 징역 4년 6개월·법정구속<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>2심<\/b> : 무죄 (진술 신빙성 부족)<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>대법원<\/b> : 11월 12일 상고 기각, 무죄 확정<\/p><\/li><\/ul>", "sec": 0, "text": "하지만 항소심은 무죄를 선고했어요.\n금품을 상장 청탁의 대가로 건넸다는\n진술의 신빙성이 부족하다고 봤죠.\n대법원 2부는 지난 12일 검찰의\n상고를 기각하며 무죄를 확정했어요.\n\n\n안성현 재판 정리\n\n\n혐의 : 특경법 위반(사기)·배임수재 (가상자산 상장 청탁 관련)\n1심 : 일부 유죄, 징역 4년 6개월·법정구속\n2심 : 무죄 (진술 신빙성 부족)\n대법원 : 11월 12일 상고 기각, 무죄 확정"}, {"kind": "text", "html": "<hr style=\"border:none;border-top:1px solid #cccccc;margin:24px 0\">", "sec": 0, "text": ""}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">21년 만의 핑클 완전체<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "21년 만의 핑클 완전체"}, {"kind": "image", "src": "png/07.png", "name": "f1.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">성유리는 남편이 재판받는 동안<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">연예 활동을 사실상 중단<\/span><\/b>했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">최근엔 이효리·옥주현·이진과<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">약 21년 만의 핑클 완전체<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">활동<\/span><\/b>을 준비하고 있어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "성유리는 남편이 재판받는 동안\n연예 활동을 사실상 중단했어요.\n최근엔 이효리·옥주현·이진과\n약 21년 만의 핑클 완전체\n활동을 준비하고 있어요."}, {"kind": "image", "src": "png/08.png", "name": "f3.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이효리는 17일 SNS에 <b><span style=\"font-size:18px\">비 오는<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">밤<\/span><\/b> 네 멤버가 함께한 사진을 공개했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">서로를 바라보며 환하게 웃는 모습이 담겼죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">마음고생 끝에 다시 웃는 성유리의<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">모습이 반갑다는 반응이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "이효리는 17일 SNS에 비 오는\n밤 네 멤버가 함께한 사진을 공개했어요.\n서로를 바라보며 환하게 웃는 모습이 담겼죠.\n마음고생 끝에 다시 웃는 성유리의\n모습이 반갑다는 반응이에요."}, {"kind": "image", "src": "png/09.png", "name": "f4.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이번 활동은 <b><span style=\"font-size:18px\">데뷔 30주년<\/span><\/b>을 향해<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">약 2년간 이어지는 장기 프로젝트예요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">음악과 공연 등 다양한 방식으로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">팬들을 만날 예정이에요.<\/p>", "sec": 1, "text": "이번 활동은 데뷔 30주년을 향해\n약 2년간 이어지는 장기 프로젝트예요.\n음악과 공연 등 다양한 방식으로\n팬들을 만날 예정이에요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">✍ 핫이슈가 본 관전 포인트<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "✍ 핫이슈가 본 관전 포인트"}, {"kind": "image", "src": "png/10.png", "name": "f5.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">긴 법적 공방이 끝난 뒤 조용히<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">건넨 '좋아요' 하나가 많은<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">걸 말해 주는 것 같아요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이제는 핑클 완전체 무대에서<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">밝은 모습을 보여 주길 기대해요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여러분은 21년 만의 핑클<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">컴백, 기다려지시나요?<\/p>", "sec": 1, "text": "긴 법적 공방이 끝난 뒤 조용히\n건넨 '좋아요' 하나가 많은\n걸 말해 주는 것 같아요.\n이제는 핑클 완전체 무대에서\n밝은 모습을 보여 주길 기대해요.\n여러분은 21년 만의 핑클\n컴백, 기다려지시나요?"}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"font-size:18px;color:#222222\"><b>📌 함께 보면 좋은 글<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "📌 함께 보면 좋은 글"}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480748380", "name": "투턱·목주름 고민이던 46세 배윤정, 안면·목 거상 3주 만에 공개한 비포&애프터 + \"진작 할 걸\" (배윤", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480748380<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224481482723", "name": "스필버그와 투샷부터 뿔테 안경까지, 문가영 뉴욕 근황 정리 + 공항 블랙 코트 (고래별)", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224481482723<\/p>", "sec": 1}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224481481275", "name": "0표녀에서 월급 2억 반전, 돌싱N모솔 2기 앙큼캣 직업은 병원 경영 본부장 + 88년생 나이 (돌싱N모솔)", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224481481275<\/p>", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">#성유리 #안성현 #안성현무죄 #성유리남편 #핑클 #핑클완전체 #이효리 #옥주현 #이진 #대법원무죄 #성유리근황 #핑클컴백 #성유리좋아요 #프로골퍼안성현 #핑클30주년 #성유리인스타 #빗썸상장 #연예계소식 #핑클재결합 #성유리복귀<\/p>", "sec": 1, "text": "#성유리 #안성현 #안성현무죄 #성유리남편 #핑클 #핑클완전체 #이효리 #옥주현 #이진 #대법원무죄 #성유리근황 #핑클컴백 #성유리좋아요 #프로골퍼안성현 #핑클30주년 #성유리인스타 #빗썸상장 #연예계소식 #핑클재결합 #성유리복귀"}], "missing": [], "secNames": ["도입 · 3년 8개월 만의 게시물, 그리고 '좋아요' · 1심 징역 4년 6개월 → 대법 무죄 · 마무리", "21년 만의 핑클 완전체 · ✍ 핫이슈가 본 관전 포인트 · 함께 보면 좋은 글"]}];
+const label = {title:'제목 칸에 붙여넣기', text:'본문', image:'이미지', link:'링크 주소 (붙여넣으면 썸네일 카드)'};
+const paper = document.getElementById('paper');
+let tab = 0, cur = -1;
+const state = TABS.map(() => ({cur: -1, done: new Set(), sec: -1, secDone: new Set()}));
+let CH = [], SECS = [], chunkEls = [];
+
+function showTab(t) {
+  state[tab].cur = cur;
+  tab = t; cur = state[t].cur; CH = TABS[t].chunks;
+  [...document.querySelectorAll('.tab')].forEach((el, k) => el.classList.toggle('on', k === t));
+  paper.innerHTML = ''; chunkEls = [];
+  SECS = [...new Set(CH.filter(c => c.kind !== 'title').map(c => c.sec))];
+  CH.forEach((c, i) => {
+    if (c.kind !== 'title' && (i === 0 || CH[i - 1].sec !== c.sec)) {
+      const si = SECS.indexOf(c.sec), cs = CH.filter(x => x.sec === c.sec);
+      const h = document.createElement('div');
+      h.className = 'sec' + (state[t].secDone.has(si) ? ' done' : '') + (si === state[t].sec ? ' current' : '');
+      h.dataset.si = si;
+      h.innerHTML = `<span>구역 <b>${si + 1}</b>/${SECS.length} · <b>${TABS[t].secNames[c.sec]}</b> · 사진 ${cs.filter(x => x.kind === 'image').length}장 (폴더: 구역별 사진/구역${c.sec + 1})</span>`;
+      const btn = document.createElement('button'); btn.textContent = '여기부터 복사';
+      btn.onclick = () => copyAt(CH.indexOf(cs[0])); h.appendChild(btn);
+      const ab = document.createElement('button'); ab.textContent = '⚡ 자동 붙여넣기'; ab.className = 'auto';
+      ab.onclick = e => { e.stopPropagation(); autoPaste(cs); }; h.appendChild(ab);
+      paper.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'chunk ' + c.kind + (state[t].done.has(i) ? ' done' : '') + (i === cur ? ' current' : '');
+    d.innerHTML = `<span class="no">${i + 1}</span><div class="kind">${label[c.kind]}${c.name ? ' · ' + c.name : ''}</div>`;
+    if (c.kind === 'image') { const im = new Image(); im.src = c.src; d.appendChild(im); }
+    else { const b = document.createElement('div'); b.innerHTML = c.html; d.appendChild(b); }
+    d.onclick = () => copyAt(i);
+    paper.appendChild(d); chunkEls.push(d);
+  });
+  try { localStorage.setItem('blogPasteTab', t); } catch (e) {}
+  render();
+}
+
+const tabsEl = document.getElementById('tabs');
+TABS.forEach((t, k) => {
+  const b = document.createElement('button');
+  b.className = 'tab';
+  b.innerHTML = `${t.name}<small>${t.style}</small>`;
+  b.onclick = () => showTab(k);
+  tabsEl.appendChild(b);
+});
+if (TABS.length < 2) tabsEl.style.display = 'none';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function toPng(src) {
+  const im = new Image(); im.src = src; await im.decode();
+  const cv = document.createElement('canvas');
+  cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext('2d').drawImage(im, 0, 0);
+  return new Promise(r => cv.toBlob(r, 'image/png'));
+}
+
+function legacyCopy(node) {
+  // 클립보드 API가 막힐 때 대비: 화면의 블록을 선택해서 복사
+  const sel = getSelection(), rg = document.createRange();
+  rg.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(rg);
+  const ok = document.execCommand('copy'); sel.removeAllRanges();
+  if (!ok) throw new Error('브라우저가 복사를 막았어요');
+}
+
+async function copyAt(i) {
+  const c = CH[i];
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      if (c.kind === 'image') throw new Error('이 브라우저는 사진 복사를 지원하지 않아요');
+      legacyCopy(chunkEls[i].lastElementChild);
+    } else if (c.kind === 'image') {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': toPng(c.src)})]);
+
+    } else if (c.kind === 'title' || c.kind === 'link') {
+      await navigator.clipboard.writeText(c.text);
+    } else {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([c.html], {type: 'text/html'}),
+        'text/plain': new Blob([c.text], {type: 'text/plain'}),
+      })]);
+    }
+  } catch (e) {
+    if (c.kind === 'image') {
+      // 링크 사진(HTML)으로 대신 복사하면 네이버 사진 수·대표이미지가 안 잡히므로 대체 복사는 하지 않는다
+      toast('사진 복사 실패 (' + e.name + ') · 사진을 우클릭(모바일은 길게 눌러) → 이미지 복사로 넣어주세요');
+      return;
+    }
+    try { legacyCopy(chunkEls[i].lastElementChild); }
+    catch (e2) { toast('복사 실패: ' + e.message); return; }
+  }
+  cur = i; state[tab].done.add(i);
+  const els = chunkEls;
+  els.forEach((el, k) => el.classList.toggle('current', k === i));
+  els[i].classList.add('done');
+  els[i].scrollIntoView({block: 'center', behavior: 'smooth'});
+  render();
+  toast(`${i + 1}번 ${c.kind === 'image' ? 'PNG 사진' : label[c.kind]} 복사됨 → 네이버에서 ⌘V`);
+}
+
+// ── 전체 복사 ─────────────────────────────
+// 텍스트만 한 번에, 이미지 자리는 [이미지 n · 파일명] 표시
+// (이미지 포함 일괄 붙여넣기는 네이버 로그아웃을 일으켜서 제거함)
+function bodyHtml() {
+  let n = 0;
+  return CH.filter(c => c.kind !== 'title').map(c => {
+    if (c.kind !== 'image') return c.html;
+    n++;
+    return `<p style="text-align:center"><span style="color:#d00;font-size:13px">[이미지 ${String(n).padStart(2,'0')} · ${c.name}]</span></p>`;
+  }).join('');
+}
+
+async function copyWhole() {
+  const html = bodyHtml();
+  const box = document.createElement('div');
+  box.innerHTML = html;
+  const plain = box.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([plain], {type: 'text/plain'}),
+    })]);
+  } catch (e) {
+    box.style.cssText = 'position:fixed;left:-99999px;top:0';
+    document.body.appendChild(box);
+    try { legacyCopy(box); } catch (e2) { box.remove(); toast('복사 실패: ' + e.message); return; }
+    box.remove();
+  }
+  const nImg = CH.filter(c => c.kind === 'image').length;
+  toast(`본문 텍스트 복사됨 → 이미지 ${nImg}장은 [이미지 n] 자리에 넣어주세요`);
+}
+
+function render() {
+  document.getElementById('status').innerHTML =
+    cur < 0 ? `총 <b>${CH.length}</b>개 블록 · 사진 ${CH.filter(c => c.kind === 'image').length}장` : `블록 <b>${cur + 1}</b> / ${CH.length}`;
+}
+// 한 블록씩: 글은 서식 그대로, 사진은 PNG 이미지 데이터로 (주소 링크가 아니라 파일처럼 올라감)
+const nextSec = () => {
+  const i = cur + 1;
+  if (i >= CH.length) return toast('마지막 블록이에요');
+  copyAt(i);
+};
+// ⚡ 자동 붙여넣기: 내 Mac의 도우미(auto_paste.py)가 글→⌘V→사진→⌘V 순서로 대신 붙여넣음
+async function autoPaste(cs) {
+  const blocks = cs.map(c => {
+    if (c.kind === 'image') return { kind: 'image', url: new URL(c.src, location.href).href };
+    if (c.kind === 'link') return { kind: 'url', text: c.text };
+    const d = document.createElement('div'); d.innerHTML = c.html;
+    return { kind: 'html', html: c.html, text: d.innerText };
+  });
+  try {
+    const r = await fetch('http://127.0.0.1:8766/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ blocks }) });
+    const j = await r.json();
+    toast(j.ok ? '⚡ 3초 안에 네이버 에디터 본문(붙여넣을 자리)을 클릭하세요. 끝날 때까지 손대지 마세요!' : j.msg);
+    if (j.ok) watchAuto();
+  } catch (e) {
+    toast('도우미가 꺼져 있어요 → 터미널에서: python3 ~/Desktop/블로그/tools/auto_paste.py');
+  }
+}
+// 진행 상황 표시 (도우미 상태를 1초마다 확인)
+function watchAuto() {
+  const st = document.getElementById('status');
+  const t = setInterval(async () => {
+    try {
+      const j = await (await fetch('http://127.0.0.1:8766/')).json();
+      st.innerHTML = '⚡ ' + j.msg;
+      if (!j.running) { clearInterval(t); toast(j.msg); }
+    } catch (e) { clearInterval(t); }
+  }, 1000);
+}
+document.getElementById('autoAll').onclick = () => {
+  const all = CH.filter(c => c.kind !== 'title');
+  if (confirm(`전체 ${all.length}개 블록(사진 ${all.filter(c => c.kind === 'image').length}장)을 자동으로 붙여넣을까요?\n시작 후 3초 안에 네이버 에디터 본문 첫 줄을 클릭하세요.\n끝날 때까지 키보드·마우스를 건드리지 마세요.`)) autoPaste(all);
+};
+document.getElementById('autoStop').onclick = async () => {
+  try { await fetch('http://127.0.0.1:8766/stop', { method: 'POST' }); toast('멈추는 중…'); } catch (e) { toast('도우미가 꺼져 있어요'); }
+};
+document.getElementById('secNext').onclick = nextSec;
+document.getElementById('secPrev').onclick = () => cur > 0 && copyAt(cur - 1);
+document.getElementById('copyText').onclick = () => copyWhole();
+document.getElementById('copyTitle').onclick = () => copyAt(0);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); nextSec(); }
+});
+
+let start = 0;
+try { start = Math.min(+localStorage.getItem('blogPasteTab') || 0, TABS.length - 1); } catch (e) {}
+CH = TABS[start].chunks; tab = start; showTab(start);
+</script>
+<a href="../../" style="position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;text-decoration:none;font-family:-apple-system,sans-serif;opacity:.9">← 목록</a></body>
+</html>

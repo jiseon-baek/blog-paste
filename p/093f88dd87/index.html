@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>붙여넣기 · 김종국이 꼽은 9세 연하 아내 존경 포인트 3가지 + 김강우 편지 100통 (옥탑방의 문제아들)</title>
+<style>
+  /* 네이버 인용구 컴포넌트 미리보기 (복사되는 HTML엔 영향 없음) */
+  .se-quotation-container { margin:8px auto; padding:14px 20px; max-width:560px; text-align:center;
+         border:none; font-family:'Nanum Myeongjo','나눔명조',serif; font-size:20px; color:#111; position:relative; }
+  .se-quotation-container::before { content:'“'; display:block; font-size:40px; line-height:1; color:#999; font-family:Georgia,serif; }
+  .se-quotation-container::after { content:''; display:block; width:120px; margin:10px auto 0; border-top:1px solid #ccc; }
+  .se-quotation-container p { margin:0; }
+  :root { --accent:#03c75a; --ink:#222; --muted:#888; --line:#e5e5e5; --done:#f3faf5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#f5f6f7; color:var(--ink);
+         font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  .top { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  .tabs { display:flex; gap:4px; padding:10px 16px 0; overflow-x:auto; }
+  .tab { border:1px solid var(--line); border-bottom:none; background:#f5f6f7; border-radius:8px 8px 0 0;
+         padding:8px 16px; font-size:14px; cursor:pointer; white-space:nowrap; color:var(--muted); }
+  .tab.on { background:#fff; color:var(--ink); font-weight:600; box-shadow:inset 0 3px 0 var(--accent); }
+  .tab small { margin-left:6px; font-weight:400; color:var(--muted); }
+  .bar { display:flex; gap:10px; align-items:center; padding:10px 16px; flex-wrap:wrap;
+         border-top:1px solid var(--line); }
+  .bar button { border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 14px;
+                font-size:14px; cursor:pointer; }
+  .bar .next { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:600; }
+  .bar .status { font-size:14px; color:var(--muted); }
+  .bar .status b { color:var(--ink); }
+  .help { font-size:12px; color:var(--muted); margin-left:auto; }
+  .paper { max-width:773px; margin:20px auto 80px; background:#fff; padding:32px 40px;
+           border:1px solid var(--line); }
+  .chunk { position:relative; padding:10px 12px; margin:0 -12px 6px; border-radius:8px;
+           border:2px dashed transparent; cursor:pointer; }
+  .chunk:hover { border-color:#cfe9d8; }
+  .chunk.current { border-color:var(--accent); border-style:solid; }
+  .chunk.done { background:var(--done); }
+  .chunk .no { position:absolute; left:-46px; top:8px; width:30px; height:22px; border-radius:11px;
+               background:#ddd; color:#fff; font-size:12px; text-align:center; line-height:22px; }
+  .chunk.current .no { background:var(--accent); }
+  .chunk.done .no { background:#9bd3ae; }
+  .chunk img { display:block; max-width:100%; margin:0 auto; }
+  .chunk.title { font-size:26px; font-weight:700; line-height:1.4; }
+  .kind { font-size:11px; color:var(--muted); margin-bottom:4px; }
+  .sec { display:flex; align-items:center; gap:10px; margin:22px -12px 8px; padding:8px 12px;
+         background:#eef8f1; border-radius:8px; font-size:13px; color:#2a6b40; }
+  .sec b { color:#174a2a; }
+  .sec button { margin-left:auto; border:1px solid var(--accent); background:#fff; color:#0a8a3e;
+                border-radius:6px; padding:6px 12px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .sec.current { background:var(--accent); color:#fff; }
+  .sec.current b { color:#fff; }
+  .sec.done button { background:#9bd3ae; border-color:#9bd3ae; color:#fff; }
+  .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#222; color:#fff;
+           padding:10px 18px; border-radius:20px; font-size:14px; opacity:0; transition:opacity .2s;
+           pointer-events:none; }
+  .toast.show { opacity:.92; }
+  @media (max-width:860px){ .paper{padding:20px 16px;margin:12px} .chunk .no{left:4px;top:4px} .help{display:none} }
+.bar button.auto{background:#ffcc00;color:#222;font-weight:700}
+.sec button.auto{background:#ffcc00;color:#222;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="tabs" id="tabs"></div>
+  <div class="bar">
+    <button id="copyTitle">제목 복사</button>
+    <button id="secPrev">◀ 이전</button>
+    <button class="next" id="secNext">다음 복사 ▶</button>
+    <button id="copyText">본문 텍스트만 전체 복사</button>
+    <button class="auto" id="autoAll">⚡ 전체 자동 붙여넣기</button>
+    <button id="autoStop">■ 멈추기</button>
+    <span class="status" id="status"></span>
+    <span class="help">스페이스 = 다음 블록 복사 (글 → 사진 → 글 …) · 사진은 PNG 파일로 복사돼 네이버에 직접 올린 사진처럼 들어가요 (사진 수·대표이미지 OK) · 블록 클릭 = 그 블록만 복사 · 네이버에서 ⌘V</span>
+  </div>
+</div>
+<div class="paper" id="paper"></div>
+<div class="toast" id="toast"></div>
+<script>
+const TABS = [{"name": "B 연예 이슈", "style": "이슈", "title": "김종국이 꼽은 9세 연하 아내 존경 포인트 3가지 + 김강우 편지 100통 (옥탑방의 문제아들)", "chunks": [{"kind": "title", "text": "김종국이 꼽은 9세 연하 아내 존경 포인트 3가지 + 김강우 편지 100통 (옥탑방의 문제아들)", "html": "김종국이 꼽은 9세 연하 아내 존경 포인트 3가지 + 김강우 편지 100통 (옥탑방의 문제아들)", "sec": -1}, {"kind": "image", "src": "png/01.png", "name": "n1.jpg", "sec": 0}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">김종국<\/span><\/b>이 꽁꽁 숨겨 온 <b><span style=\"font-size:18px\">9세<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">연하 아내<\/span><\/b>를 자랑했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">17일 방송된 KBS 2TV<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'옥탑방의 문제아들'<\/span><\/b>에서였죠.<\/p>", "sec": 0, "text": "김종국이 꽁꽁 숨겨 온 9세\n연하 아내를 자랑했어요.\n17일 방송된 KBS 2TV\n'옥탑방의 문제아들'에서였죠."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">존경할 점 3개, 쓰는 데 오래 걸린 이유<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "존경할 점 3개, 쓰는 데 오래 걸린 이유"}, {"kind": "image", "src": "png/02.png", "name": "k4.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이날 김종국은 <b><span style=\"font-size:18px\">아내를 존경하는<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">점 세 가지<\/span><\/b>를 적어 공개했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">그런데 쓰는 데 유난히 시간이 오래 걸렸대요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "출처 : KBS Entertain\n이날 김종국은 아내를 존경하는\n점 세 가지를 적어 공개했어요.\n그런데 쓰는 데 유난히 시간이 오래 걸렸대요."}, {"kind": "image", "src": "png/03.png", "name": "k6.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이유를 묻자 <b><span style=\"font-size:18px\">\"골라야 하니까.<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">너무 많으니까\"<\/span><\/b>라고 너스레를 떨었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">아내 자랑을 참지 못하는 모습이었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "출처 : KBS Entertain\n이유를 묻자 \"골라야 하니까.\n너무 많으니까\"라고 너스레를 떨었어요.\n아내 자랑을 참지 못하는 모습이었어요."}, {"kind": "image", "src": "png/04.png", "name": "k10.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">첫 번째는 <b><span style=\"font-size:18px\">책임감<\/span><\/b>이었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"음식을 대충 먹겠다고 해도 본인이<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">다 갖춰서 해주려고 한다\"<\/span><\/b>고 자랑했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "출처 : KBS Entertain\n첫 번째는 책임감이었어요.\n\"음식을 대충 먹겠다고 해도 본인이\n다 갖춰서 해주려고 한다\"고 자랑했어요."}, {"kind": "image", "src": "png/05.png", "name": "k11.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">두 번째는 <b><span style=\"font-size:18px\">철저히 계획적인 삶<\/span><\/b>이에요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"저는 P다. 계획이 없고<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">즉흥적인데, 아내는 항상 정확하게<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">계획을 짜서 산다\"<\/span><\/b>고 했죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "출처 : KBS Entertain\n두 번째는 철저히 계획적인 삶이에요.\n\"저는 P다. 계획이 없고\n즉흥적인데, 아내는 항상 정확하게\n계획을 짜서 산다\"고 했죠."}, {"kind": "image", "src": "png/06.png", "name": "k12.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">송은이가 <b><span style=\"font-size:18px\">\"안정적으로 만들어주느냐\"<\/span><\/b>고 묻자<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">김종국은 <b><span style=\"font-size:18px\">\"제가 배우게 된다.<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">나도 저렇게 해야겠구나\"<\/span><\/b>라고 답했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 1, "text": "출처 : KBS Entertain\n송은이가 \"안정적으로 만들어주느냐\"고 묻자\n김종국은 \"제가 배우게 된다.\n나도 저렇게 해야겠구나\"라고 답했어요."}, {"kind": "image", "src": "png/07.png", "name": "k99.jpg", "sec": 1}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">세 번째는 <b><span style=\"font-size:18px\">어른 공경<\/span><\/b>이었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"어른 공경을 굉장히 잘한다\"<\/span><\/b>며<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">아내를 향한 애정을 드러냈어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#555555;background-color:#fff8b2;font-size:19px\"><b>김종국이 꼽은 아내의 존경할 점<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif\"><br><\/p><ul style=\"margin:0;padding-left:22px;list-style-type:disc\"><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>1<\/b> : 책임감 (\"다 갖춰서 해주려고 한다\")<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>2<\/b> : 계획적인 삶 (\"나는 P, 아내는 계획형\")<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>3<\/b> : 어른 공경<\/p><\/li><li><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:left\"><b>결혼<\/b> : 지난해 9월 9세 연하 비연예인과 결혼<\/p><\/li><\/ul>", "sec": 1, "text": "세 번째는 어른 공경이었어요.\n\"어른 공경을 굉장히 잘한다\"며\n아내를 향한 애정을 드러냈어요.\n\n\n김종국이 꼽은 아내의 존경할 점\n\n\n1 : 책임감 (\"다 갖춰서 해주려고 한다\")\n2 : 계획적인 삶 (\"나는 P, 아내는 계획형\")\n3 : 어른 공경\n결혼 : 지난해 9월 9세 연하 비연예인과 결혼"}, {"kind": "text", "html": "<hr style=\"border:none;border-top:1px solid #cccccc;margin:24px 0\">", "sec": 1, "text": ""}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">김강우는 24년간 편지 100통<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "김강우는 24년간 편지 100통"}, {"kind": "image", "src": "png/08.png", "name": "k14.jpg", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">이날 게스트로는 KBS 2TV 대하드라마<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">'문무'<\/span><\/b>의 주연 <b><span style=\"font-size:18px\">김강우<\/span><\/b>가 나왔어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "출처 : KBS Entertain\n이날 게스트로는 KBS 2TV 대하드라마\n'문무'의 주연 김강우가 나왔어요."}, {"kind": "image", "src": "png/09.png", "name": "k16.jpg", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">김강우는 영화 <b><span style=\"font-size:18px\">'해안선'<\/span><\/b>을 찍던<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">무명 시절 <b><span style=\"font-size:18px\">지인 소개<\/span><\/b>로 아내를 만났대요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">연애 8년, 결혼 16년째<\/span><\/b>,<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">그동안 아내에게<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">쓴 편지가 <b><span style=\"font-size:18px\">100통이 넘는다<\/span><\/b>고 해요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">최근 <b><span style=\"font-size:18px\">결혼기념일<\/span><\/b>에도 편지를 썼다고 밝혔죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "출처 : KBS Entertain\n김강우는 영화 '해안선'을 찍던\n무명 시절 지인 소개로 아내를 만났대요.\n연애 8년, 결혼 16년째,\n그동안 아내에게\n쓴 편지가 100통이 넘는다고 해요.\n최근 결혼기념일에도 편지를 썼다고 밝혔죠."}, {"kind": "image", "src": "png/10.png", "name": "k21.jpg", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">아내의 답장은 없대요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"저희 아내가 진짜 털털하다\"<\/span><\/b>며 웃었어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">대본 이면지에 편지를 쓴 적도 있대요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"누구랑 제일 친하냐고 물으면<\/span><\/b><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">아내랑 제일 친하다\"<\/span><\/b>는 말도 남겼죠.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "출처 : KBS Entertain\n아내의 답장은 없대요.\n\"저희 아내가 진짜 털털하다\"며 웃었어요.\n대본 이면지에 편지를 쓴 적도 있대요.\n\"누구랑 제일 친하냐고 물으면\n아내랑 제일 친하다\"는 말도 남겼죠."}, {"kind": "image", "src": "png/11.png", "name": "k8.jpg", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">부부 싸움 화해 원칙도 공개됐어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">김강우는 다음 날까지<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">넘기지 않으려 한다며<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"그래야 아이들이 안심하니까\"<\/span><\/b>라고 했어요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">김종국도 아내에게 편지를<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">써 보라는 말에<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><b><span style=\"font-size:18px\">\"당연히 써야 되는 거 아닌가\"<\/span><\/b>라고 답했어요.<\/p>", "sec": 2, "text": "출처 : KBS Entertain\n부부 싸움 화해 원칙도 공개됐어요.\n김강우는 다음 날까지\n넘기지 않으려 한다며\n\"그래야 아이들이 안심하니까\"라고 했어요.\n김종국도 아내에게 편지를\n써 보라는 말에\n\"당연히 써야 되는 거 아닌가\"라고 답했어요."}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><div class=\"se-component se-quotation se-l-default\"><div class=\"se-component-content\"><div class=\"se-section se-section-quotation se-l-default\"><blockquote class=\"se-quotation-container\"><div class=\"se-module se-module-text se-quote\"><p class=\"se-text-paragraph se-text-paragraph-align-center\"><span class=\"se-fs- se-ff-\">✍ 핫이슈가 본 관전 포인트<\/span><\/p><\/div><\/blockquote><\/div><\/div><\/div><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "✍ 핫이슈가 본 관전 포인트"}, {"kind": "image", "src": "png/12.png", "name": "k24.jpg", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"color:#999999;font-size:13px\">출처 : KBS Entertain<\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">아내 이야기만 나오면 말이 많아지는<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">김종국, 결혼 1년 차다운 모습이네요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">즉흥형 남편과 계획형 아내, 서로<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">배우며 사는 부부라 더 보기 좋아요.<\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">여러분은 계획형인가요, 즉흥형인가요?<\/p>", "sec": 2, "text": "출처 : KBS Entertain\n아내 이야기만 나오면 말이 많아지는\n김종국, 결혼 1년 차다운 모습이네요.\n즉흥형 남편과 계획형 아내, 서로\n배우며 사는 부부라 더 보기 좋아요.\n여러분은 계획형인가요, 즉흥형인가요?"}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><span style=\"font-size:18px;color:#222222\"><b>📌 함께 보면 좋은 글<\/b><\/span><\/p><p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\"><br><\/p>", "sec": 2, "text": "📌 함께 보면 좋은 글"}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480363645", "name": "새우 까주던 16기 상철, 캠프파이어에선 \"쿨한 척 가식적\" 직격 + 28기 영숙 눈물 (계약결혼)", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480363645<\/p>", "sec": 2}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480354895", "name": "탱크 몰고 마라룽샤까지 커진 볼거리, 지구마불4는 왜 4회째 1%대일까? + 시청자 반응 (지구마불 세계여행", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480354895<\/p>", "sec": 2}, {"kind": "link", "text": "https://blog.naver.com/hallobanggu/224480345387", "name": "적금 깨고 대출까지 갚아줬다는 28기 현숙, 영식과 결별 후 꺼낸 더치페이 후회 + \"기대는 남자 싫어\" (", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">https://blog.naver.com/hallobanggu/224480345387<\/p>", "sec": 2}, {"kind": "text", "html": "<p style=\"margin:0;font-size:15px;line-height:1.8;color:#999999;font-family:NanumSquare,'나눔스퀘어',sans-serif;text-align:center\">#김종국 #김종국아내 #김종국결혼 #옥탑방의문제아들 #옥문아 #김강우 #김강우아내 #송은이 #9세연하 #비연예인아내 #김종국근황 #문무 #KBS2 #사랑꾼 #김종국존경 #계획형 #어른공경 #김강우편지 #결혼1주년 #런닝맨김종국<\/p>", "sec": 2, "text": "#김종국 #김종국아내 #김종국결혼 #옥탑방의문제아들 #옥문아 #김강우 #김강우아내 #송은이 #9세연하 #비연예인아내 #김종국근황 #문무 #KBS2 #사랑꾼 #김종국존경 #계획형 #어른공경 #김강우편지 #결혼1주년 #런닝맨김종국"}], "missing": [], "secNames": ["도입", "존경할 점 3개, 쓰는 데 오래 걸린 이유 · 마무리", "김강우는 24년간 편지 100통 · ✍ 핫이슈가 본 관전 포인트 · 함께 보면 좋은 글"]}];
+const label = {title:'제목 칸에 붙여넣기', text:'본문', image:'이미지', link:'링크 주소 (붙여넣으면 썸네일 카드)'};
+const paper = document.getElementById('paper');
+let tab = 0, cur = -1;
+const state = TABS.map(() => ({cur: -1, done: new Set(), sec: -1, secDone: new Set()}));
+let CH = [], SECS = [], chunkEls = [];
+
+function showTab(t) {
+  state[tab].cur = cur;
+  tab = t; cur = state[t].cur; CH = TABS[t].chunks;
+  [...document.querySelectorAll('.tab')].forEach((el, k) => el.classList.toggle('on', k === t));
+  paper.innerHTML = ''; chunkEls = [];
+  SECS = [...new Set(CH.filter(c => c.kind !== 'title').map(c => c.sec))];
+  CH.forEach((c, i) => {
+    if (c.kind !== 'title' && (i === 0 || CH[i - 1].sec !== c.sec)) {
+      const si = SECS.indexOf(c.sec), cs = CH.filter(x => x.sec === c.sec);
+      const h = document.createElement('div');
+      h.className = 'sec' + (state[t].secDone.has(si) ? ' done' : '') + (si === state[t].sec ? ' current' : '');
+      h.dataset.si = si;
+      h.innerHTML = `<span>구역 <b>${si + 1}</b>/${SECS.length} · <b>${TABS[t].secNames[c.sec]}</b> · 사진 ${cs.filter(x => x.kind === 'image').length}장 (폴더: 구역별 사진/구역${c.sec + 1})</span>`;
+      const btn = document.createElement('button'); btn.textContent = '여기부터 복사';
+      btn.onclick = () => copyAt(CH.indexOf(cs[0])); h.appendChild(btn);
+      const ab = document.createElement('button'); ab.textContent = '⚡ 자동 붙여넣기'; ab.className = 'auto';
+      ab.onclick = e => { e.stopPropagation(); autoPaste(cs); }; h.appendChild(ab);
+      paper.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'chunk ' + c.kind + (state[t].done.has(i) ? ' done' : '') + (i === cur ? ' current' : '');
+    d.innerHTML = `<span class="no">${i + 1}</span><div class="kind">${label[c.kind]}${c.name ? ' · ' + c.name : ''}</div>`;
+    if (c.kind === 'image') { const im = new Image(); im.src = c.src; d.appendChild(im); }
+    else { const b = document.createElement('div'); b.innerHTML = c.html; d.appendChild(b); }
+    d.onclick = () => copyAt(i);
+    paper.appendChild(d); chunkEls.push(d);
+  });
+  try { localStorage.setItem('blogPasteTab', t); } catch (e) {}
+  render();
+}
+
+const tabsEl = document.getElementById('tabs');
+TABS.forEach((t, k) => {
+  const b = document.createElement('button');
+  b.className = 'tab';
+  b.innerHTML = `${t.name}<small>${t.style}</small>`;
+  b.onclick = () => showTab(k);
+  tabsEl.appendChild(b);
+});
+if (TABS.length < 2) tabsEl.style.display = 'none';
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function toPng(src) {
+  const im = new Image(); im.src = src; await im.decode();
+  const cv = document.createElement('canvas');
+  cv.width = im.naturalWidth; cv.height = im.naturalHeight;
+  cv.getContext('2d').drawImage(im, 0, 0);
+  return new Promise(r => cv.toBlob(r, 'image/png'));
+}
+
+function legacyCopy(node) {
+  // 클립보드 API가 막힐 때 대비: 화면의 블록을 선택해서 복사
+  const sel = getSelection(), rg = document.createRange();
+  rg.selectNodeContents(node); sel.removeAllRanges(); sel.addRange(rg);
+  const ok = document.execCommand('copy'); sel.removeAllRanges();
+  if (!ok) throw new Error('브라우저가 복사를 막았어요');
+}
+
+async function copyAt(i) {
+  const c = CH[i];
+  try {
+    if (!navigator.clipboard || !window.ClipboardItem) {
+      if (c.kind === 'image') throw new Error('이 브라우저는 사진 복사를 지원하지 않아요');
+      legacyCopy(chunkEls[i].lastElementChild);
+    } else if (c.kind === 'image') {
+      await navigator.clipboard.write([new ClipboardItem({'image/png': toPng(c.src)})]);
+
+    } else if (c.kind === 'title' || c.kind === 'link') {
+      await navigator.clipboard.writeText(c.text);
+    } else {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([c.html], {type: 'text/html'}),
+        'text/plain': new Blob([c.text], {type: 'text/plain'}),
+      })]);
+    }
+  } catch (e) {
+    if (c.kind === 'image') {
+      // 링크 사진(HTML)으로 대신 복사하면 네이버 사진 수·대표이미지가 안 잡히므로 대체 복사는 하지 않는다
+      toast('사진 복사 실패 (' + e.name + ') · 사진을 우클릭(모바일은 길게 눌러) → 이미지 복사로 넣어주세요');
+      return;
+    }
+    try { legacyCopy(chunkEls[i].lastElementChild); }
+    catch (e2) { toast('복사 실패: ' + e.message); return; }
+  }
+  cur = i; state[tab].done.add(i);
+  const els = chunkEls;
+  els.forEach((el, k) => el.classList.toggle('current', k === i));
+  els[i].classList.add('done');
+  els[i].scrollIntoView({block: 'center', behavior: 'smooth'});
+  render();
+  toast(`${i + 1}번 ${c.kind === 'image' ? 'PNG 사진' : label[c.kind]} 복사됨 → 네이버에서 ⌘V`);
+}
+
+// ── 전체 복사 ─────────────────────────────
+// 텍스트만 한 번에, 이미지 자리는 [이미지 n · 파일명] 표시
+// (이미지 포함 일괄 붙여넣기는 네이버 로그아웃을 일으켜서 제거함)
+function bodyHtml() {
+  let n = 0;
+  return CH.filter(c => c.kind !== 'title').map(c => {
+    if (c.kind !== 'image') return c.html;
+    n++;
+    return `<p style="text-align:center"><span style="color:#d00;font-size:13px">[이미지 ${String(n).padStart(2,'0')} · ${c.name}]</span></p>`;
+  }).join('');
+}
+
+async function copyWhole() {
+  const html = bodyHtml();
+  const box = document.createElement('div');
+  box.innerHTML = html;
+  const plain = box.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], {type: 'text/html'}),
+      'text/plain': new Blob([plain], {type: 'text/plain'}),
+    })]);
+  } catch (e) {
+    box.style.cssText = 'position:fixed;left:-99999px;top:0';
+    document.body.appendChild(box);
+    try { legacyCopy(box); } catch (e2) { box.remove(); toast('복사 실패: ' + e.message); return; }
+    box.remove();
+  }
+  const nImg = CH.filter(c => c.kind === 'image').length;
+  toast(`본문 텍스트 복사됨 → 이미지 ${nImg}장은 [이미지 n] 자리에 넣어주세요`);
+}
+
+function render() {
+  document.getElementById('status').innerHTML =
+    cur < 0 ? `총 <b>${CH.length}</b>개 블록 · 사진 ${CH.filter(c => c.kind === 'image').length}장` : `블록 <b>${cur + 1}</b> / ${CH.length}`;
+}
+// 한 블록씩: 글은 서식 그대로, 사진은 PNG 이미지 데이터로 (주소 링크가 아니라 파일처럼 올라감)
+const nextSec = () => {
+  const i = cur + 1;
+  if (i >= CH.length) return toast('마지막 블록이에요');
+  copyAt(i);
+};
+// ⚡ 자동 붙여넣기: 내 Mac의 도우미(auto_paste.py)가 글→⌘V→사진→⌘V 순서로 대신 붙여넣음
+async function autoPaste(cs) {
+  const blocks = cs.map(c => {
+    if (c.kind === 'image') return { kind: 'image', url: new URL(c.src, location.href).href };
+    if (c.kind === 'link') return { kind: 'url', text: c.text };
+    const d = document.createElement('div'); d.innerHTML = c.html;
+    return { kind: 'html', html: c.html, text: d.innerText };
+  });
+  try {
+    const r = await fetch('http://127.0.0.1:8766/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ blocks }) });
+    const j = await r.json();
+    toast(j.ok ? '⚡ 3초 안에 네이버 에디터 본문(붙여넣을 자리)을 클릭하세요. 끝날 때까지 손대지 마세요!' : j.msg);
+    if (j.ok) watchAuto();
+  } catch (e) {
+    toast('도우미가 꺼져 있어요 → 터미널에서: python3 ~/Desktop/블로그/tools/auto_paste.py');
+  }
+}
+// 진행 상황 표시 (도우미 상태를 1초마다 확인)
+function watchAuto() {
+  const st = document.getElementById('status');
+  const t = setInterval(async () => {
+    try {
+      const j = await (await fetch('http://127.0.0.1:8766/')).json();
+      st.innerHTML = '⚡ ' + j.msg;
+      if (!j.running) { clearInterval(t); toast(j.msg); }
+    } catch (e) { clearInterval(t); }
+  }, 1000);
+}
+document.getElementById('autoAll').onclick = () => {
+  const all = CH.filter(c => c.kind !== 'title');
+  if (confirm(`전체 ${all.length}개 블록(사진 ${all.filter(c => c.kind === 'image').length}장)을 자동으로 붙여넣을까요?\n시작 후 3초 안에 네이버 에디터 본문 첫 줄을 클릭하세요.\n끝날 때까지 키보드·마우스를 건드리지 마세요.`)) autoPaste(all);
+};
+document.getElementById('autoStop').onclick = async () => {
+  try { await fetch('http://127.0.0.1:8766/stop', { method: 'POST' }); toast('멈추는 중…'); } catch (e) { toast('도우미가 꺼져 있어요'); }
+};
+document.getElementById('secNext').onclick = nextSec;
+document.getElementById('secPrev').onclick = () => cur > 0 && copyAt(cur - 1);
+document.getElementById('copyText').onclick = () => copyWhole();
+document.getElementById('copyTitle').onclick = () => copyAt(0);
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); nextSec(); }
+});
+
+let start = 0;
+try { start = Math.min(+localStorage.getItem('blogPasteTab') || 0, TABS.length - 1); } catch (e) {}
+CH = TABS[start].chunks; tab = start; showTab(start);
+</script>
+<a href="../../" style="position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;text-decoration:none;font-family:-apple-system,sans-serif;opacity:.9">← 목록</a></body>
+</html>

@@ -1,0 +1,6 @@
+api/
+vercel.json
+requirements.txt
+.vercel/
+.DS_Store
+__pycache__/
